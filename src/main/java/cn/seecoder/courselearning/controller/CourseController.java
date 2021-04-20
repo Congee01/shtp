@@ -23,6 +23,7 @@ public class CourseController {
      */
     @GetMapping("/{courseId}")
     public CourseVO getCourseById(@RequestParam(required = false, defaultValue = "") Integer uid, @PathVariable Integer courseId) {
+        //return courseService.getCourse(courseId, uid);
         return courseService.getCourse(courseId, uid);
     }
 
