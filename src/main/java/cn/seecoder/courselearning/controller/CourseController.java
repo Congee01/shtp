@@ -68,6 +68,7 @@ public class CourseController {
      */
     @GetMapping("/tid/{tid}")
     public List<CourseVO> getManageableCourses(@PathVariable Integer tid) {
+        //return courseService.getManageableCourses(tid);
         return courseService.getManageableCourses(tid);
     }
 
