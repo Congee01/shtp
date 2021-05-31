@@ -10,7 +10,7 @@
         v-show="showSuccessDialog"
         transition="scroll-y-transition"
       >
-        登录成功，欢迎{{ username }}登录二手交易平台 !
+        登录成功，欢迎{{ username }} !
       </v-alert>
       <!-- alert -->
       <v-alert
