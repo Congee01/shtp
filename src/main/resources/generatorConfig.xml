@@ -17,13 +17,13 @@
     	</commentGenerator>
   
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/courselearning?useUnicode=true&amp;characterEncoding=UTF-8&amp;userSSL=false&amp;serverTimezone=GMT%2B8"
+                        connectionURL="jdbc:mysql://localhost:3306/shtp?useUnicode=true&amp;characterEncoding=UTF-8&amp;userSSL=false&amp;serverTimezone=GMT%2B8"
                         userId="root"
                         password="123456">
         </jdbcConnection>
 
          <!--生成model类的存放位置 -->
-         <javaModelGenerator targetPackage="cn.seecoder.courselearning.po" targetProject="src/main/java">
+         <javaModelGenerator targetPackage="shtp.po" targetProject="src/main/java">
              <property name="enableSubPackages" value="true"/>
              <property name="trimStrings" value="true"/>
          </javaModelGenerator>
@@ -34,7 +34,7 @@
          </sqlMapGenerator>
       
 	     <!-- 生成Dao类的存放位置-->
-         <javaClientGenerator type="XMLMAPPER" targetPackage="cn.seecoder.courselearning.mapperservice" targetProject="src/main/java">
+         <javaClientGenerator type="XMLMAPPER" targetPackage="shtp.mapperservice" targetProject="src/main/java">
              <property name="enableSubPackages" value="true"/>
          </javaClientGenerator>
          

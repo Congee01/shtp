@@ -10,7 +10,6 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-
       <v-btn text @click="direct('/login')">
         登录/注册
       </v-btn>

@@ -31,7 +31,6 @@
           type="password"
           label="密码"
         ></v-text-field>
-        <v-select v-model="userRole" :items="roles" label="用户角色"></v-select>
         <v-btn class="ml-0 mt-8 info" @click="handleRegister">
           注册
         </v-btn>
@@ -42,7 +41,7 @@
         class="float-right ma-4"
         @click="
           () => {
-            this.$router.push('/login');
+            this.$router.push('/');
           }
         "
       >
@@ -66,7 +65,6 @@ export default {
       showSuccessDialog: false,
       showFailDialog: false,
       msg: "",
-      roles: ["teacher", "student"],
     };
   },
   methods: {
@@ -76,14 +74,12 @@ export default {
         phone: this.phone,
         password: this.password,
         picture: null,
-        userRole: this.userRole.toUpperCase(),
       }).then((res) => {
         console.log(res);
         if (res.code === 1) {
           window.localStorage.setItem("userId", res.data.id);
           window.localStorage.setItem("userPhone", res.data.phone);
           window.localStorage.setItem("username", res.data.uname);
-          window.localStorage.setItem("userRole", res.data.userRole);
           this.username = res.data.uname;
           this.showSuccessDialog = true;
           setTimeout(() => {

@@ -10,7 +10,7 @@
         v-show="showSuccessDialog"
         transition="scroll-y-transition"
       >
-        登录成功，欢迎{{ username }} !
+        登录成功，欢迎{{ username }}登录二手交易平台 !
       </v-alert>
       <!-- alert -->
       <v-alert
@@ -23,6 +23,9 @@
       >
         {{ msg }}
       </v-alert>
+      <div class="in-middle">
+        <img :src="img" alt="Tulip"/>
+      </div>
       <form class="pa-12 grey lighten-5 mt-10 form">
         <v-text-field v-model="phone" label="手机号码"></v-text-field>
         <v-text-field
@@ -63,6 +66,7 @@ export default {
       showFailDialog: false,
       msg: "",
       username: "",
+      img: require("../assets/网站标题.png")
     };
   },
   methods: {
@@ -79,16 +83,7 @@ export default {
           setTimeout(() => {
             this.showSuccessDialog = false;
           }, 1000);
-          if (res.data.userRole === "STUDENT") {
-            setTimeout(() => {
-              this.$router.push("/student");
-            }, 800);
-          }
-          if (res.data.userRole === "TEACHER") {
-            setTimeout(() => {
-              this.$router.push("/teacher");
-            }, 800);
-          }
+          this.$router.push("/user")
         } else {
           this.msg = res.msg;
           this.showFailDialog = true;
@@ -106,12 +101,17 @@ export default {
 <style scoped>
 .form {
   position: relative;
-  top: 50px;
+  top: 20px;
 }
 .alert {
   position: fixed;
   left: 50%;
   top: 100px;
   z-index: 999;
+}
+.in-middle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

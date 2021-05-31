@@ -1,5 +1,7 @@
 <template>
+
   <v-card :color="courseColor" dark width="380" height="260" class="ma-4 pa-2">
+
     <v-card-title class="headline">
       {{ courseName }}
       <v-chip

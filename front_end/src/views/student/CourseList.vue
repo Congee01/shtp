@@ -21,7 +21,6 @@
             <v-tab>初级课程</v-tab>
             <v-tab>中级课程</v-tab>
             <v-tab>高级课程</v-tab>
-
             <v-tab-item v-for="c in [primary, medium, advanced]" :key="c.name">
               <v-container fluid>
                 <v-row class="ma-4">

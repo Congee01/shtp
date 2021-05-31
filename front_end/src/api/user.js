@@ -8,9 +8,9 @@ import { USER_MODULE } from "./_prefix";
  */
 export const register = payload => {
   console.log(payload);
-  const { uname, phone, password, picture, userRole = "STUDENT" } = payload;
+  const { uname, phone, password, picture} = payload;
   return axios.post(`${USER_MODULE}/register`, {
-    uname, phone, password, picture, userRole
+    uname, phone, password, picture
   }).then(res => {
     return res.data;
   });
@@ -24,7 +24,7 @@ export const register = payload => {
   //     "uname": "小张同学",
   //     "phone": "102123456789",
   //     "password": null,
-  //     "picture": "1.png",
+  //     "picture": "网站标题.png",
   //     "balance": 0,
   //     "userRole": "STUDENT",
   //     "createTime": "2021-03-13T01:45:48.246+00:00"
@@ -32,11 +32,6 @@ export const register = payload => {
   // });
 };
 
-/**
- *  用户登录 POST /user/login
- * @param {*} payload 
- * @returns 
- */
 export const login = payload => {
   console.log(payload);
   const { phone, password } = payload;
@@ -45,11 +40,7 @@ export const login = payload => {
   });
 }
 
-/**
- * 用户充值 POST /user/recharge
- * @param {*} payload 
- * @returns 
- */
+
 export const recharge = payload => {
   console.log(payload);
   const { userId, value } = payload;
@@ -58,11 +49,7 @@ export const recharge = payload => {
   });
 }
 
-/**
- *  获取用户 GET /user/{uid}
- * @param {*} uid 
- * @returns 
- */
+
 export const getUser = uid => {
   console.log(uid);
   return axios.get(`${USER_MODULE}/${uid}`).then(res => {
