@@ -5,3 +5,4 @@ export const ORDER_MODULE = `${API_VERSION}/course_order`;
 export const COURSE_WARE = `${API_VERSION}/course_ware`;
 export const FILE_MODULE = `${API_VERSION}/file`;
 export const USER_MODULE = `${API_VERSION}/user`;
+export const PRODUCT_MODULE = `${API_VERSION}/product`;

@@ -23,9 +23,9 @@ import java.util.Properties;
 public class DataSourceConfig {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "cn.seecoder.courselearning.mapperservice";
+    static final String PACKAGE = "com.shtp.mapperservice";
     static final String MAPPER_LOCATION = "classpath:mapper/*.xml";
-    static final String ALIAS = "cn.seecoder.courselearning.po";
+    static final String ALIAS = "com.shtp.po";
 
     @Value("${spring.datasource.url}")
     private String url;

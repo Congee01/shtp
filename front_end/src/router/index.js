@@ -1,10 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import UserLayout from "@/layouts/UserLayout.vue";
+
 import Login from "@/views/Login";
 import HomePage from "@/views/User/HomePage.vue";
 import Register from "@/views/Register";
 import UserCenter from "@/views/User/UserCenter.vue";
+import ProductPeek from "@/views/User/ProductPeek";
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,7 +22,7 @@ const routes = [
   {
     path: "/user",
     name: "user",
-    component: UserLayout,
+    component: HomePage,
     children: [
       {
         path: "/",
@@ -35,6 +36,11 @@ const routes = [
     path: "/user/:userId",
     name: "UserCenter",
     component: UserCenter
+  },
+  {
+    path: "/user/:productId",
+    name: "ProductPeek",
+    component: ProductPeek
   }
 ];
 

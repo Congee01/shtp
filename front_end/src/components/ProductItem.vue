@@ -1,52 +1,32 @@
 <template>
   <v-card>
-    <v-card-title>
+    <v-card-title class="title">
       {{ ProductName }}
-      <v-chip
-        small
-        class="ml-4"
-        v-show="status === 1 || status === 0"
-        :color="chipColor[status]"
-      >
-        {{ chip[status] }}
-      </v-chip>
     </v-card-title>
-    <v-card-picture class="picture">
-      <img src="ProductPicture" />
-    </v-card-picture>
+    <img :src="ProductPicture" alt="Tulip"/>
     <v-card-text class="text">
       {{ text }}
     </v-card-text>
     <v-card-action>
-      <v-btn text v-show="status === -1" @click="handlePeek">
+      <v-btn text v-show="true" @click="handlePeek">
         浏览商品
-      </v-btn>
-      <v-btn
-        text
-        v-show="status === -1 || (status === 0 && !bought)"
-        @click="buyProduct"
-      >
-        {{ cost === 0 ? "免费购买" : "购买商品" }}
       </v-btn>
     </v-card-action>
   </v-card>
 </template>
 
 <script>
+import Vue from "vue";
 export default Vue.extend({
   name: "ProductItem",
   props: {
-    ProductName: {
+    ProductName:{
       type: String,
-      default: name
+      default: "线性代数"
     },
     ProductId: {
       type: Number,
       default: 0
-    },
-    ProductPicture: {
-      type: String,
-      default: "defaultImg"
     },
     description: {
       type: String,
@@ -68,7 +48,8 @@ export default Vue.extend({
   data() {
     return {
       chip: ["免费", "已购"],
-      chipColor: ["success", "primary"]
+      chipColor: ["success", "primary"],
+      ProductPicture: require("../assets/defaultImg.jpg")
     };
   },
   methods: {
@@ -76,7 +57,7 @@ export default Vue.extend({
       this.$emit("buy-product", this.ProductId, this.ProductName, this.cost);
     },
     handlePeek() {
-      this.$router.push(`/student/peek/${this.ProductId}`);
+      this.$router.push(`/user/peek/${this.ProductId}`);
     }
   },
   computed: {
