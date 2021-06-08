@@ -19,6 +19,8 @@ public interface ProductMapper {
 
     List<Product> queryAll(String key);
 
-    List<Product> selectById(Integer userId);
+    List<Product> selectByUserId(Integer userId);
+
+    List<Product> selectByManagerId(Integer managerId);
 
 }

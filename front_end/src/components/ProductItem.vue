@@ -2,6 +2,14 @@
   <v-card>
     <v-card-title class="ma-4 pa-2">
       {{ productName }}
+      <v-chip
+          small
+          class="ml-4"
+          v-show="status === 1 || status === 0"
+          :color="chipColor[status]"
+      >
+        {{ chip[status] }}
+      </v-chip>
     </v-card-title>
     <img :src="ProductPicture" alt="Tulip"/>
     <v-card-text class="text">

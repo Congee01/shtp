@@ -122,7 +122,7 @@ export default {
       optionList: [
         {
           optionName: "历史订单",
-          link: "/user/history"
+          link: `/user/${window.localStorage.getItem("userId")}/history`
         },
         {
           optionName: "个人中心",
@@ -214,11 +214,14 @@ export default {
     },
 
     getUserBoughtProducts() {
+      console.log("2");
       const uid = window.localStorage.getItem("userId");
       getBoughtProduct(uid).then(res => {
+        console.log(res);
         this.boughtProductList = res || [];
       });
-    }
+    },
+
   },
   mounted() {
     this.handleSearchProduct();

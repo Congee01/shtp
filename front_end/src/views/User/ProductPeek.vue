@@ -72,13 +72,13 @@
       </v-row>
     </v-container>
     <!-- 购买提示对话框 -->
-    <v-dialog v-model="dialog" width="500">
+    <v-dialog v-model="dialog" width="500" >
       <v-card>
         <v-card-title>购买商品</v-card-title>
 
         <v-card-text>
-          是否花费 「{{ currentProductPrice }}元」购买课程 「{{
-            currentProductName
+          是否花费 「{{ product.cost }}元」购买商品 「{{
+            product.name
           }}」？
         </v-card-text>
 
@@ -129,7 +129,7 @@ export default {
       optionList: [
         {
           optionName: "历史订单",
-          link: "/user/history"
+          link: `/user/${window.localStorage.getItem("userId")}/history`
         },
         {
           optionName: "个人中心",
@@ -164,7 +164,8 @@ export default {
       }
     },
     buyProduct() {
-      this.$emit("buy-product", this.currentProductId, this.currentProductName, this.currentProductPrice);
+      console.log("buy1")
+      this.dialog=true;
     },
     loadProduct() {
       const { productId } = this.$route.params;
@@ -177,9 +178,9 @@ export default {
       console.log("buy");
       const uid = window.localStorage.getItem("userId");
       createOrder({
-        productId: this.currentProductId,
-        productName: this.currentProductName,
-        cost: this.currentProductPrice,
+        productId: this.product.id,
+        productName: this.product.name,
+        cost: this.product.cost,
         userId: uid,
         status: 2,
       }).then((res) => {
@@ -188,6 +189,11 @@ export default {
             (res.code === 1 ? "「购买成功」！" : "「购买失败」！") + res.msg;
         this.dialog2 = true;
       });
+    },
+    logout() {
+      window.localStorage.removeItem("userId");
+      window.localStorage.removeItem("userPhone");
+      window.localStorage.removeItem("username");
     }
   },
   mounted() {

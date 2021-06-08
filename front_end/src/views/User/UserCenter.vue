@@ -123,7 +123,7 @@ export default {
       optionList: [
         {
           optionName: "历史订单",
-          link: "/user/history",
+          link: `/user/${window.localStorage.getItem("userId")}/history`,
         },
         {
           optionName: "个人中心",

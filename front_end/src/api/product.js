@@ -19,7 +19,7 @@ export const getProductByKey = payload => {
 
 
 export const getBoughtProduct = uid => {
-    return axios.get(`${PRODUCT_MODULE}/${uid}`).then(res => {
+    return axios.get(`${PRODUCT_MODULE}/uid/${uid}`).then(res => {
         return res.data;
     });
 }

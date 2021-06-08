@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
 import Login from "@/views/Login";
 import HomePage from "@/views/User/HomePage.vue";
 import Register from "@/views/Register";
 import UserCenter from "@/views/User/UserCenter.vue";
 import ProductPeek from "@/views/User/ProductPeek";
+import HistoryOrder from "@/views/User/HistoryOrder";
 Vue.use(VueRouter);
 
 const routes = [
@@ -41,6 +41,11 @@ const routes = [
     path: "/user/peek/:productId",
     name: "ProductPeek",
     component: ProductPeek
+  },
+  {
+    path:"/user/:userId/history",
+    name:"HistoryOrder",
+    component: HistoryOrder
   }
 ];
 

@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductVO> getBoughtProduct(Integer uid) {
         List<ProductVO> ret = new ArrayList<>();
-        List<Product> productList = productMapper.selectById(uid);
+        List<Product> productList = productMapper.selectByUserId(uid);
         for(Product product:productList){
             ret.add(new ProductVO(product,true,false));
         }
@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductVO> getManageableProducts(Integer uid) {
         List<ProductVO> ret = new ArrayList<>();
-        List<Product> productList = productMapper.selectById(uid);
+        List<Product> productList = productMapper.selectByManagerId(uid);
         for(Product product:productList){
             ret.add(new ProductVO(product,false,true));
         }
@@ -72,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ResultVO<ProductVO> createCourse(ProductVO productVO) {
         productVO.setCreateTime(new Date());
-        for(Product product: productMapper.selectById(productVO.getManagerId())){
+        for(Product product: productMapper.selectByManagerId(productVO.getManagerId())){
             if (product.getName().equals(productVO.getName()))
                 return new ResultVO<>(Constant.REQUEST_FAIL, "已存在同名商品！");
         }
