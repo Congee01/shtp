@@ -36,7 +36,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("/uid/{uid}")
+    @GetMapping("/uid/manage/{uid}")
     public List<ProductVO> getManageableProducts(@PathVariable Integer uid) {
         return productService.getManageableProducts(uid);
     }

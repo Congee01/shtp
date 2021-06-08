@@ -1,21 +1,19 @@
 package com.shtp.serviceimpl;
 
-import com.github.pagehelper.PageInfo;
 import com.shtp.mapperservice.ProductOrderMapper;
 import com.shtp.mapperservice.UserMapper;
 import com.shtp.po.ProductOrder;
 import com.shtp.po.User;
 import com.shtp.service.ProductOrderService;
-import com.shtp.service.ProductService;
 import com.shtp.util.Constant;
 import com.shtp.vo.ProductOrderVO;
-import com.shtp.vo.ProductVO;
 import com.shtp.vo.ResultVO;
-
+import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ProductOrderServiceImpl implements ProductOrderService {
     @Resource
     private ProductOrderMapper productOrderMapper;

@@ -29,7 +29,7 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-container>
+    <v-container class="ma-8 pa-4">
       <!-- 搜索商品 -->
       <v-row class="mt-10">
         <v-col>
@@ -50,11 +50,11 @@
         </v-col>
       </v-row>
       <v-row>
-        <product-item
+        <ProductItem
           cols="12"
           md="4"
           v-for="product in searchProduct"
-          :key="product"
+          :key="product.id"
           :productName="product.name"
           :productId="product.id"
           :description="product.intro"
@@ -62,9 +62,9 @@
           :picture="product.picture"
           :bought="product.bought"
           :manageable="product.manageable"
-          @buy-course="showDialog"
+          @buy-product="showDialog"
         >
-        </product-item>
+        </ProductItem>
       </v-row>
       <v-row class="d-flex justify-center">
         <v-pagination
@@ -74,7 +74,6 @@
           circle
         ></v-pagination>
       </v-row>
-
       <v-row class="ma-12">
         <v-divider></v-divider>
       </v-row>
@@ -88,26 +87,27 @@
       </v-row>
       <v-row>
         <product-item
-          cols="12"
-          md="4"
-          v-for="product in boughtProductList"
-          :key="product.id"
-          :productName="product.name"
-          :productId="product.id"
-          :description="product.intro"
-          :cost="product.cost"
-          :bought="product.bought"
-          :manageable="product.manageable"
-          @buy-course="showDialog"
+            cols="12"
+            md="4"
+            v-for="product in boughtProductList"
+            :key="product"
+            :productName="product.name"
+            :productId="product.id"
+            :description="product.intro"
+            :cost="product.cost"
+            :bought="product.bought"
+            :manageable="product.manageable"
+            @buy-course="showDialog"
         >
         </product-item>
       </v-row>
+
     </v-container>
   </div>
 </template>
 
 <script>
-import ProductItem from "@/components/ProductItem";
+import ProductItem from "@/components/ProductItem.vue";
 import { createOrder } from "@/api/order";
 import { getBoughtProduct, getProductByKey } from "@/api/product";
 
@@ -200,6 +200,7 @@ export default {
     },
 
     handleSearchProduct() {
+      console.log("1");
       const uid = window.localStorage.getItem("userId");
       getProductByKey({
         uid,
@@ -207,7 +208,7 @@ export default {
         page: this.searchCurrentPage
       }).then(res => {
         console.log(res);
-        this.searchCourse = res.list;
+        this.searchProduct = res.list;
         this.searchTotalPage = res.pages;
       });
     },
@@ -215,13 +216,13 @@ export default {
     getUserBoughtProducts() {
       const uid = window.localStorage.getItem("userId");
       getBoughtProduct(uid).then(res => {
-        this.boughtCoursesList = res || [];
+        this.boughtProductList = res || [];
       });
     }
   },
   mounted() {
-    this.handleSearchCourse();
-    this.getUserBoughtCourses();
+    this.handleSearchProduct();
+    this.getUserBoughtProducts();
   }
 };
 </script>

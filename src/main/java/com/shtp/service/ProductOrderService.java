@@ -1,6 +1,4 @@
 package com.shtp.service;
-
-import com.shtp.po.Product;
 import com.shtp.vo.ProductOrderVO;
 import com.shtp.vo.ResultVO;
 

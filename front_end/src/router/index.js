@@ -38,7 +38,7 @@ const routes = [
     component: UserCenter
   },
   {
-    path: "/user/:productId",
+    path: "/user/peek/:productId",
     name: "ProductPeek",
     component: ProductPeek
   }

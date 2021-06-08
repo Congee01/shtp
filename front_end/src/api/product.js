@@ -25,7 +25,7 @@ export const getBoughtProduct = uid => {
 }
 
 
-export const createCProduct = payload => {
+export const createProduct = payload => {
     const { name, intro, picture, cost, managerId, managerName, bought, manageable } = payload;
     return axios.post(`${PRODUCT_MODULE}/create`, {
         name,  intro, picture,  cost, managerId, managerName, bought, manageable

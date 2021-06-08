@@ -7,9 +7,9 @@ import { ORDER_MODULE } from "./_prefix";
  * @returns 
  */
 export const createOrder = payload => {
-  const { courseId, courseName, cost, userId, status } = payload;
+  const { productId, productName, cost, userId, status } = payload;
   return axios.post(`${ORDER_MODULE}/create`, {
-    courseId, courseName, cost, userId, status
+    productId, productName, cost, userId, status
   }).then(res => {
     return res.data;
   });
