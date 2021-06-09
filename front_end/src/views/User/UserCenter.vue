@@ -131,7 +131,7 @@ export default {
         },
         {
           optionName: "我要当卖家",
-          link: "/user/sell"
+          link:`/user/${window.localStorage.getItem("userId")}/sell`
         },
         {
           optionName: "登出",

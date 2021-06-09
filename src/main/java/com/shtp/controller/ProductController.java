@@ -43,7 +43,12 @@ public class ProductController {
 
 
     @PostMapping("/create")
-    public ResultVO<ProductVO> createCourse(@RequestBody ProductVO productVO) {
+    public ResultVO<ProductVO> createProduct(@RequestBody ProductVO productVO) {
         return productService.createCourse(productVO);
+    }
+
+    @PostMapping("/update")
+    public ResultVO<ProductVO> updateProduct(@RequestBody ProductVO productVO){
+        return productService.updateProduct(productVO);
     }
 }

@@ -87,21 +87,20 @@
       </v-row>
       <v-row>
         <product-item
-            cols="12"
-            md="4"
-            v-for="product in boughtProductList"
-            :key="product"
-            :productName="product.name"
-            :productId="product.id"
-            :description="product.intro"
-            :cost="product.cost"
-            :bought="product.bought"
-            :manageable="product.manageable"
-            @buy-course="showDialog"
+          cols="12"
+          md="4"
+          v-for="product in boughtProductList"
+          :key="product"
+          :productName="product.name"
+          :productId="product.id"
+          :description="product.intro"
+          :cost="product.cost"
+          :bought="product.bought"
+          :manageable="product.manageable"
+          @buy-course="showDialog"
         >
         </product-item>
       </v-row>
-
     </v-container>
   </div>
 </template>
@@ -130,7 +129,7 @@ export default {
         },
         {
           optionName: "我要当卖家",
-          link: "/user/sell"
+          link: `/user/${window.localStorage.getItem("userId")}/sell`
         },
         {
           optionName: "登出",
@@ -220,8 +219,7 @@ export default {
         console.log(res);
         this.boughtProductList = res || [];
       });
-    },
-
+    }
   },
   mounted() {
     this.handleSearchProduct();

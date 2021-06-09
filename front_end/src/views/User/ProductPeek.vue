@@ -20,9 +20,9 @@
 
         <v-list>
           <v-list-item
-              v-for="opt in optionList"
-              :key="opt.optionName"
-              @click="direct(opt.link)"
+            v-for="opt in optionList"
+            :key="opt.optionName"
+            @click="direct(opt.link)"
           >
             <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
           </v-list-item>
@@ -63,23 +63,20 @@
               label="商品价格(元)"
               readonly
             ></v-text-field>
-
           </form>
-          <v-btn @click="buyProduct"
-          >{{ product.cost === 0 ? "免费购买" : "购买商品" }}</v-btn
-          >
+          <v-btn @click="buyProduct">{{
+            product.cost === 0 ? "免费购买" : "购买商品"
+          }}</v-btn>
         </v-col>
       </v-row>
     </v-container>
     <!-- 购买提示对话框 -->
-    <v-dialog v-model="dialog" width="500" >
+    <v-dialog v-model="dialog" width="500">
       <v-card>
         <v-card-title>购买商品</v-card-title>
 
         <v-card-text>
-          是否花费 「{{ product.cost }}元」购买商品 「{{
-            product.name
-          }}」？
+          是否花费 「{{ product.cost }}元」购买商品 「{{ product.name }}」？
         </v-card-text>
 
         <v-divider></v-divider>
@@ -120,12 +117,12 @@
 
 <script>
 import { getProductById } from "@/api/product";
-import {createOrder} from "@/api/order";
+import { createOrder } from "@/api/order";
 
 export default {
   name: "ProductPeek",
-  data(){
-    return{
+  data() {
+    return {
       optionList: [
         {
           optionName: "历史订单",
@@ -137,22 +134,22 @@ export default {
         },
         {
           optionName: "我要当卖家",
-          link: "/user/sell"
+          link: `/user/${window.localStorage.getItem("userId")}/sell`
         },
         {
           optionName: "登出",
           link: "/"
         }
       ],
-      product:{},
+      product: {},
       dialog: false,
       dialog2: false,
       msg: "",
       currentProductId: 0,
       currentProductName: "",
       currentProductPrice: 0,
-      currentTab: 0, // 0 1 2
-    }
+      currentTab: 0 // 0 1 2
+    };
   },
   methods: {
     direct(link) {
@@ -164,8 +161,8 @@ export default {
       }
     },
     buyProduct() {
-      console.log("buy1")
-      this.dialog=true;
+      console.log("buy1");
+      this.dialog = true;
     },
     loadProduct() {
       const { productId } = this.$route.params;
@@ -174,7 +171,7 @@ export default {
         this.product = res;
       });
     },
-    handleBuyProduct(){
+    handleBuyProduct() {
       console.log("buy");
       const uid = window.localStorage.getItem("userId");
       createOrder({
@@ -182,11 +179,11 @@ export default {
         productName: this.product.name,
         cost: this.product.cost,
         userId: uid,
-        status: 2,
-      }).then((res) => {
+        status: 2
+      }).then(res => {
         this.dialog = false;
         this.msg =
-            (res.code === 1 ? "「购买成功」！" : "「购买失败」！") + res.msg;
+          (res.code === 1 ? "「购买成功」！" : "「购买失败」！") + res.msg;
         this.dialog2 = true;
       });
     },

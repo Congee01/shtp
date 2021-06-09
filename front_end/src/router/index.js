@@ -6,6 +6,9 @@ import Register from "@/views/Register";
 import UserCenter from "@/views/User/UserCenter.vue";
 import ProductPeek from "@/views/User/ProductPeek";
 import HistoryOrder from "@/views/User/HistoryOrder";
+import SellProduct from "@/views/User/SellProduct";
+import EditProduct from "@/views/User/EditProduct";
+import CreateProduct from "@/views/User/CreateProduct";
 Vue.use(VueRouter);
 
 const routes = [
@@ -29,7 +32,6 @@ const routes = [
         name: "UserHomePage",
         component: HomePage
       }
-
     ]
   },
   {
@@ -43,9 +45,24 @@ const routes = [
     component: ProductPeek
   },
   {
-    path:"/user/:userId/history",
-    name:"HistoryOrder",
+    path: "/user/:userId/history",
+    name: "HistoryOrder",
     component: HistoryOrder
+  },
+  {
+    path: "/user/:userId/sell",
+    name: "SellProduct",
+    component: SellProduct
+  },
+  {
+    path: "/user/:userId/create",
+    name:"createProduct",
+    component: CreateProduct
+  },
+  {
+    path: "/user/edit/:productId",
+    name: "EditProduct",
+    component: EditProduct
   }
 ];
 
@@ -54,6 +71,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
-
 
 export default router;

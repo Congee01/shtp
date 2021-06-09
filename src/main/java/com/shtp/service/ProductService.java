@@ -17,4 +17,6 @@ public interface ProductService {
     ProductVO getProduct(Integer productId, Integer uid);
     // 创建课程
     ResultVO<ProductVO> createCourse(ProductVO productVOs);
+
+    ResultVO<ProductVO> updateProduct(ProductVO productVO);
 }

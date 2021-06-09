@@ -20,9 +20,9 @@
 
         <v-list>
           <v-list-item
-            v-for="opt in optionList"
-            :key="opt.optionName"
-            @click="direct(opt.link)"
+              v-for="opt in optionList"
+              :key="opt.optionName"
+              @click="direct(opt.link)"
           >
             <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
           </v-list-item>
@@ -30,41 +30,46 @@
       </v-menu>
     </v-app-bar>
     <v-container class="ma-8 pa-4">
-      <v-card
-        v-for="o in orderList"
-        :key="o.id"
-        :color="colorList[o.id % colorList.length]"
-        class="ma-8 pa-4"
-      >
-        <v-card-title class="headline">
-          {{ o.productName }}
-        </v-card-title>
-        <v-card-subtitle class="mt-1">
-          购买时间: {{ o.createTime }}
-        </v-card-subtitle>
-        <v-card-text> 购买价格： {{ o.cost }} </v-card-text>
-        <v-card-actions class="pa-0 pl-2"> </v-card-actions>
-      </v-card>
+      <v-row>
+        <router-link :to="`/user/:userId/create`">
+          <v-btn class="ma-4 mb-8" fab dark color="indigo">
+            <v-icon dark large>
+              mdi-plus
+            </v-icon>
+          </v-btn>
+        </router-link>
+      </v-row>
+      <v-row>
+        <product-item-sell
+          v-for="product in productList"
+          :key="product.id"
+          :productName="product.name"
+          :productId="product.id"
+          :description="product.intro"
+          :cost="product.cost"
+          :bought="product.bought"
+          :manageable="product.manageable"
+          :product-color="colorList[product.id % colorList.length]"
+        >
+        </product-item-sell>
+      </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
-import { getOrdersByUser } from "@/api/order";
+import ProductItemSell from "@/components/ProductItemSell";
+import { getManageableProduct } from "@/api/product";
 
 export default {
-  name: "HistoryOrder",
+  name: "SellProduct",
+  components: {
+    ProductItemSell
+  },
   data() {
     return {
-      colorList: [
-        "#FFAB91",
-        "#26A69A",
-        "#039BE5",
-        "#546E7A",
-        "#B39DDB",
-        "#EF9A9A"
-      ],
-      orderList: [],
+      colorList: ["#26A69A", "#00B0FF", "#5C6BC0", "#FFB300", "#E57373"],
+      productList: null,
       optionList: [
         {
           optionName: "历史订单",
@@ -102,10 +107,12 @@ export default {
   },
   mounted() {
     const uid = window.localStorage.getItem("userId");
-    getOrdersByUser(uid).then(res => {
-      console.log(res);
-      this.orderList = res || [];
-    });
+    if (uid) {
+      getManageableProduct(uid).then(res => {
+        console.log(res);
+        this.productList = res || [];
+      });
+    }
   }
 };
 </script>

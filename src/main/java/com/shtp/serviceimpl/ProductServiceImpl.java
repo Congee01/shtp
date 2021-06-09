@@ -83,6 +83,18 @@ public class ProductServiceImpl implements ProductService {
         return new ResultVO<>(Constant.REQUEST_FAIL, "服务器错误");
     }
 
+    @Override
+    public ResultVO<ProductVO> updateProduct(ProductVO productVO) {
+        Product product=new Product(productVO);
+        if(productMapper.updateByPrimaryKey(product) > 0){
+            return new ResultVO<>(Constant.REQUEST_SUCCESS,"商品信息更新成功",new ProductVO(product));
+        }
+        else{
+            return new ResultVO<>(Constant.REQUEST_FAIL,"商品信息更新失败");
+        }
+    }
+
+
     private PageInfo<ProductVO> getProductVOPageInfo(Integer uid, PageInfo<Product> po) {
         PageInfo<ProductVO> result = PageInfoUtil.convert(po, ProductVO.class);
         if(uid != null && uid > 0){

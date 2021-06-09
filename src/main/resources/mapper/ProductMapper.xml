@@ -68,7 +68,7 @@
                       select o.id from product_order o where o.product_id = p.id and o.user_id = #{userId}
                   )
     </select>
-    <select id="selectByTeacherId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectByManagerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select p.id, name, intro, picture, create_time, delete_time, cost, manager_id, manager_name
         from product p
         where manager_id = #{userId}
