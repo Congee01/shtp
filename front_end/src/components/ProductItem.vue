@@ -1,5 +1,6 @@
 <template>
-  <v-card class="ma-4 pa-2" >
+
+  <v-card class="ma-4 pa-2"   >
     <v-card-title class="ma-4 pa-2">
       <h1>商品名称：{{ productName }}</h1>
       <v-chip
@@ -11,10 +12,10 @@
         {{ chip[status] }}
       </v-chip>
     </v-card-title>
-    <h2><img :src="picture" alt="Tulip" /></h2>
+    <h2><img :src="pictureUrl" alt="Tulip" /></h2>
 
     <v-card-text class="text">
-      {{ description }}
+      {{ text}}
     </v-card-text>
 
     <v-card-action>
@@ -38,7 +39,10 @@ export default Vue.extend({
       type: Number,
       default: 0
     },
-
+    picture:{
+      type:String,
+      default: "defaultImg"
+    },
     description: {
       type: String,
       default: "商品简介"
@@ -60,7 +64,7 @@ export default Vue.extend({
     return {
       chip: ["免费", "已购"],
       chipColor: ["success", "primary"],
-      picture: require("../assets/defaultImg.jpg")
+      pictureUrl: require("../assets/"+this.picture),
     };
   },
   methods: {
@@ -73,9 +77,9 @@ export default Vue.extend({
   },
   computed: {
     text: function() {
-      return this.description.length < 20
+      return this.description.length < 30
         ? this.description
-        : this.description.substring(0, 20) + "...";
+        : this.description.substring(0, 30) + "...";
     },
 
     // 0 免费  1 已购

@@ -148,7 +148,7 @@ export default {
       currentProductId: 0,
       currentProductName: "",
       currentProductPrice: 0,
-      currentTab: 0 // 0 1 2
+      currentTab: 0, // 0 1 2
     };
   },
   methods: {

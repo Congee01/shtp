@@ -16,6 +16,7 @@
         v-model="productInfo.cost"
         label="商品价格"
     ></v-text-field>
+
     <v-text-field
         v-model="productInfo.createTime"
         label="创建时间"
@@ -37,6 +38,7 @@
 
 <script>
 import {getProductById, updateProduct} from "@/api/product";
+
 
 export default {
   name: "EditProduct",

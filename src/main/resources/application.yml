@@ -27,8 +27,9 @@ logging:
 
 
 # 自定义标签 ${web.file-upload-path} 用于存储向服务器上传的文件
-web:
-  file-upload-path: /front_end/src/assets/
+#web:
+ # file-upload-path: /front_end/src/assets/
 #web:
 #  file-upload-path: D:/courselearning/upload/
-
+web:
+  file-upload-path: C:/Users/86138/Desktop/计网大作业/Second-hand-trading-platform/front_end/src/assets/

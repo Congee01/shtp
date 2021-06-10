@@ -44,6 +44,7 @@
           v-for="product in productList"
           :key="product.id"
           :productName="product.name"
+          :picture="product.picture"
           :productId="product.id"
           :description="product.intro"
           :cost="product.cost"

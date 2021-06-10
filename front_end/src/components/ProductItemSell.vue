@@ -1,11 +1,11 @@
 <template>
-  <v-card>
+  <v-card class="ma-4 pa-2">
     <v-card-title class="ma-4 pa-2">
       {{ productName }}
     </v-card-title>
-    <img :src="ProductPicture" alt="Tulip"/>
+    <img :src="pictureUrl" alt="Tulip"/>
     <v-card-text class="text">
-      {{ description }}
+      {{ text}}
     </v-card-text>
     <v-card-action>
       <router-link :to="`/user/edit/${productId}`">
@@ -27,6 +27,10 @@ export default {
       type: Number,
       default: 0
     },
+    picture:{
+      type: String,
+      default: "defaultImg",
+    },
     description: {
       type: String,
       default: "商品简介"
@@ -46,14 +50,14 @@ export default {
   },
   data() {
     return {
-      ProductPicture: require("../assets/defaultImg.jpg")
+      pictureUrl: require("../assets/"+this.picture),
     }
   },
   computed: {
     text: function() {
-      return this.description.length < 60
+      return this.description.length < 30
           ? this.description
-          : this.description.substring(0, 60) + "...";
+          : this.description.substring(0, 30) + "...";
     },
   },
 }
