@@ -50,7 +50,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <ProductItem
+        <product-item
           cols="12"
           md="4"
           v-for="product in searchProduct"
@@ -64,7 +64,7 @@
           :manageable="product.manageable"
           @buy-product="showDialog"
         >
-        </ProductItem>
+        </product-item>
       </v-row>
       <v-row class="d-flex justify-center">
         <v-pagination

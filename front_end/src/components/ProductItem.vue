@@ -1,24 +1,26 @@
 <template>
-  <v-card>
+  <v-card class="ma-4 pa-2" >
     <v-card-title class="ma-4 pa-2">
-      {{ productName }}
+      <h1>商品名称：{{ productName }}</h1>
       <v-chip
-          small
-          class="ml-4"
-          v-show="status === 1 || status === 0"
-          :color="chipColor[status]"
+        small
+        class="ml-4"
+        v-show="status === 1 || status === 0"
+        :color="chipColor[status]"
       >
         {{ chip[status] }}
       </v-chip>
     </v-card-title>
-    <img :src="ProductPicture" alt="Tulip"/>
+    <h2><img :src="picture" alt="Tulip" /></h2>
+
     <v-card-text class="text">
       {{ description }}
     </v-card-text>
+
     <v-card-action>
-      <v-btn text v-show="true" @click="handlePeek">
+      <h3><v-btn v-show="true" @click="handlePeek">
         浏览商品
-      </v-btn>
+      </v-btn></h3>
     </v-card-action>
   </v-card>
 </template>
@@ -28,7 +30,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "ProductItem",
   props: {
-    productName:{
+    productName: {
       type: String,
       default: "线性代数"
     },
@@ -36,6 +38,7 @@ export default Vue.extend({
       type: Number,
       default: 0
     },
+
     description: {
       type: String,
       default: "商品简介"
@@ -57,7 +60,7 @@ export default Vue.extend({
     return {
       chip: ["免费", "已购"],
       chipColor: ["success", "primary"],
-      ProductPicture: require("../assets/defaultImg.jpg")
+      picture: require("../assets/defaultImg.jpg")
     };
   },
   methods: {
@@ -89,7 +92,23 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+h1 {
+  font-weight: normal;
+  font-size: large;
+  color: #3d5afe;
+}
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+h3{
+  text-align: right;
+}
 .text {
+  font-size: large;
+  font-weight: bold;
   height: 85px;
   overflow: hidden;
 }

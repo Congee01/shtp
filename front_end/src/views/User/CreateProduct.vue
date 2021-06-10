@@ -30,6 +30,18 @@
             v-model="productInfo.cost"
             label="课程价格(元)"
         ></v-text-field>
+        <v-form ref="uploadFileForm" >
+          <v-file-input
+              hide-input
+              prepend-icon="mdi-plus"
+              v-model="ImgInfo"
+              @change="handleUploadFile"
+          >
+          </v-file-input>
+        </v-form>
+        <div>
+          <img :src="ImgInfo"/>
+        </div>
         <v-btn class="ml-0 mt-8 info" @click="submit">
           确认
         </v-btn>
@@ -42,7 +54,7 @@
         <v-card-title> </v-card-title>
 
         <v-card-text>
-          专题创建成功。
+          商品创建成功。
         </v-card-text>
 
         <v-divider></v-divider>
@@ -60,6 +72,7 @@
 
 <script>
 import {createProduct} from "@/api/product";
+import {uploadFile} from "@/api/file";
 
 export default {
   name: "CreateProduct",
@@ -72,6 +85,7 @@ export default {
         picture: "",
         cost: 0,
       },
+      ImgInfo: null,
       dialog: false,
       showSuccessDialog: false,
       showFailDialog: false,
@@ -80,12 +94,19 @@ export default {
   },
 
   methods: {
+    async handleUploadFile(){
+      console.log("up");
+      const formData = new window.FormData();
+      formData.append("file", this.ImgInfo);
+      const res = await uploadFile(formData);
+      this.productInfo.picture=res.data.name;
+      console.log(res);
+    },
     submit() {
       const uid = window.localStorage.getItem("userId");
       const uname = window.localStorage.getItem("username");
       const payload = {
         ...this.productInfo,
-        picture: null,
         managerId: uid,
         managerName: uname,
         bought: false,

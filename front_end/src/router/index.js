@@ -56,7 +56,7 @@ const routes = [
   },
   {
     path: "/user/:userId/create",
-    name:"createProduct",
+    name: "createProduct",
     component: CreateProduct
   },
   {

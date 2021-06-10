@@ -23,19 +23,24 @@
       >
         {{ msg }}
       </v-alert>
+
       <div class="in-middle">
         <img :src="img" alt="Tulip"/>
       </div>
       <form class="pa-12 grey lighten-5 mt-10 form">
+        <div class="title">
+          <h1>二手交易平台</h1>
+        </div>
+
         <v-text-field v-model="phone" label="手机号码"></v-text-field>
         <v-text-field
           v-model="password"
           label="密码"
           type="password"
         ></v-text-field>
-        <v-btn class="ml-0 mt-8 info" @click="handleLogin">
+        <h2><v-btn class="ml-0 mt-8 info"  @click="handleLogin">
           登录
-        </v-btn>
+        </v-btn></h2>
       </form>
       <v-btn
         text
@@ -47,7 +52,7 @@
           }
         "
       >
-        去注册
+        还没有账号？点击此处去注册
       </v-btn>
     </v-container>
   </div>
@@ -66,7 +71,7 @@ export default {
       showFailDialog: false,
       msg: "",
       username: "",
-      img: require("../assets/网站标题.png")
+      img: require("../assets/网站标题.png"),
     };
   },
   methods: {
@@ -113,5 +118,16 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
+h1{
+  font-family: "Calibri Light",serif;
+  font-weight: bolder;
+  text-align: center;
+}
+h2{
+  text-align: center;
+}
+
+
 </style>
