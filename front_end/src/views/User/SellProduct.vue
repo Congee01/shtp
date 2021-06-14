@@ -1,6 +1,7 @@
 <template>
+  <body>
   <div>
-    <v-app-bar color="#409EFF" dense dark>
+    <v-app-bar color="#69f0ae" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -41,21 +42,22 @@
       </v-row>
       <v-row>
         <product-item-sell
-          v-for="product in productList"
-          :key="product.id"
-          :productName="product.name"
-          :picture="product.picture"
-          :productId="product.id"
-          :description="product.intro"
-          :cost="product.cost"
-          :bought="product.bought"
-          :manageable="product.manageable"
-          :product-color="colorList[product.id % colorList.length]"
+            v-for="product in productList"
+            :key="product.id"
+            :productName="product.name"
+            :picture="product.picture"
+            :productId="product.id"
+            :description="product.intro"
+            :cost="product.cost"
+            :bought="product.bought"
+            :manageable="product.manageable"
+            :product-color="colorList[product.id % colorList.length]"
         >
         </product-item-sell>
       </v-row>
     </v-container>
   </div>
+  </body>
 </template>
 
 <script>
@@ -117,3 +119,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+body{
+  background-color: #69f0ae;
+  background-image: url("back.png");
+}
+</style>

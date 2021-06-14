@@ -1,8 +1,9 @@
 <template>
+  <body>
   <v-container>
     <v-text-field
-      v-model="productInfo.id"
-      label="商品ID"
+        v-model="productInfo.id"
+        label="商品ID"
     ></v-text-field>
     <v-text-field
         v-model="productInfo.name"
@@ -34,6 +35,7 @@
       </v-btn>
     </router-link>
   </v-container>
+  </body>
 </template>
 
 <script>
@@ -90,4 +92,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+body{
+  background-image: url("back.png");
+  background-color: #69f0ae;
+}
+</style>

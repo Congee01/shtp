@@ -1,6 +1,7 @@
 <template>
+  <body>
   <div id="layout">
-    <v-app-bar color="#409EFF" dense dark>
+    <v-app-bar color="#69f0ae" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -20,9 +21,9 @@
 
         <v-list>
           <v-list-item
-            v-for="opt in optionList"
-            :key="opt.optionName"
-            @click="direct(opt.link)"
+              v-for="opt in optionList"
+              :key="opt.optionName"
+              @click="direct(opt.link)"
           >
             <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
           </v-list-item>
@@ -33,7 +34,7 @@
       <!-- 搜索商品 -->
       <v-row class="mt-10">
         <v-col>
-          <v-chip color="#00B0FF" label text-color="white">
+          <v-chip color="#69f0ae" label text-color="white">
             <v-icon left>
               SHTP
             </v-icon>
@@ -42,43 +43,44 @@
         </v-col>
         <v-col>
           <v-text-field
-            v-model="searchText"
-            outlined
-            label="搜索商品"
-            append-icon="mdi-magnify"
+              v-model="searchText"
+              outlined
+              label="搜索商品"
+              append-icon="mdi-magnify"
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row>
         <product-item
-          cols="12"
-          md="4"
-          v-for="product in searchProduct"
-          :key="product.id"
-          :productName="product.name"
-          :productId="product.id"
-          :description="product.intro"
-          :cost="product.cost"
-          :picture="product.picture"
-          :bought="product.bought"
-          :manageable="product.manageable"
-          @buy-product="showDialog"
+            cols="12"
+            md="4"
+            v-for="product in searchProduct"
+            :key="product.id"
+            :productName="product.name"
+            :productId="product.id"
+            :description="product.intro"
+            :cost="product.cost"
+            :picture="product.picture"
+            :bought="product.bought"
+            :manageable="product.manageable"
+            @buy-product="showDialog"
         >
         </product-item>
       </v-row>
       <v-row class="d-flex justify-center">
         <v-pagination
-          class="mt-4"
-          v-model="searchCurrentPage"
-          :length="searchTotalPage"
-          circle
+            color="#69f0ae"
+            class="mt-4"
+            v-model="searchCurrentPage"
+            :length="searchTotalPage"
+            circle
         ></v-pagination>
       </v-row>
       <v-row class="ma-12">
         <v-divider></v-divider>
       </v-row>
       <v-row class="mt-8 mb-2">
-        <v-chip class="ma-2" color="#00B0FF" label text-color="white">
+        <v-chip class="ma-2" color="#69f0ae" label text-color="white">
           <v-icon left>
             SHTP
           </v-icon>
@@ -87,22 +89,23 @@
       </v-row>
       <v-row>
         <product-item
-          cols="12"
-          md="4"
-          v-for="product in boughtProductList"
-          :key="product"
-          :productName="product.name"
-          :productId="product.id"
-          :description="product.intro"
-          :cost="product.cost"
-          :bought="product.bought"
-          :manageable="product.manageable"
-          @buy-course="showDialog"
+            cols="12"
+            md="4"
+            v-for="product in boughtProductList"
+            :key="product"
+            :productName="product.name"
+            :productId="product.id"
+            :description="product.intro"
+            :cost="product.cost"
+            :bought="product.bought"
+            :manageable="product.manageable"
+            @buy-course="showDialog"
         >
         </product-item>
       </v-row>
     </v-container>
   </div>
+  </body>
 </template>
 
 <script>
@@ -228,4 +231,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+body{
+  background-color: #69f0ae;
+  background-image: url("back.png");
+}
+</style>

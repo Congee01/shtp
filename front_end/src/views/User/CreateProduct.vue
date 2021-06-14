@@ -1,4 +1,5 @@
 <template>
+  <body>
   <div>
     <!-- alert -->
     <v-alert
@@ -68,6 +69,7 @@
       </v-card>
     </v-dialog>
   </div>
+  </body>
 </template>
 
 <script>
@@ -135,7 +137,12 @@ export default {
 </script>
 
 <style scoped>
+body{
+
+  background-color: #69f0ae;
+}
 .alert {
+  background-color: #69f0ae;
   position: fixed;
   left: 50%;
   top: 100px;

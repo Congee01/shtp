@@ -1,7 +1,8 @@
 <template>
+  <body>
   <v-card class="ma-4 pa-2">
     <v-card-title class="ma-4 pa-2">
-      {{ productName }}
+      <h1>{{ productName }}</h1>
     </v-card-title>
     <img :src="pictureUrl" alt="Tulip"/>
     <v-card-text class="text">
@@ -9,10 +10,11 @@
     </v-card-text>
     <v-card-action>
       <router-link :to="`/user/edit/${productId}`">
-        <v-btn text v-show="manageable">管理商品</v-btn>
+        <h3><v-btn text v-show="manageable">管理商品</v-btn></h3>
       </router-link>
     </v-card-action>
   </v-card>
+  </body>
 </template>
 
 <script>
@@ -64,7 +66,24 @@ export default {
 </script>
 
 <style scoped>
+body{
+  background-image: url("background.jpg");
+  background-color: #69f0ae;
+}
+h1 {
+  font-family: "Arial Black";
+  font-weight: bolder;
+  font-size: large;
+  color: #69f0ae;
+}
+h3{
+
+  text-align: right;
+}
 .text {
+  font-size: large;
+  font-weight: bold;
+
   height: 85px;
   overflow: hidden;
 }

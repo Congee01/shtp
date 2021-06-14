@@ -1,6 +1,7 @@
 <template>
+  <body>
   <div>
-    <v-app-bar color="#409EFF" dense dark>
+    <v-app-bar color="#69f0ae" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -20,9 +21,9 @@
 
         <v-list>
           <v-list-item
-            v-for="opt in optionList"
-            :key="opt.optionName"
-            @click="direct(opt.link)"
+              v-for="opt in optionList"
+              :key="opt.optionName"
+              @click="direct(opt.link)"
           >
             <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
           </v-list-item>
@@ -34,39 +35,39 @@
         <v-col>
           <form class="pa-12 grey lighten-5 mt-8">
             <v-text-field
-              v-model="product.name"
-              label="商品名称"
-              readonly
+                v-model="product.name"
+                label="商品名称"
+                readonly
             ></v-text-field>
             <v-text-field
-              v-model="product.id"
-              label="商品ID"
-              readonly
+                v-model="product.id"
+                label="商品ID"
+                readonly
             ></v-text-field>
             <v-textarea
-              v-model="product.intro"
-              label="商品简介"
-              readonly
+                v-model="product.intro"
+                label="商品简介"
+                readonly
             ></v-textarea>
             <v-text-field
-              v-model="product.createTime"
-              label="创建时间"
-              readonly
+                v-model="product.createTime"
+                label="创建时间"
+                readonly
             ></v-text-field>
             <v-text-field
-              v-model="product.managerId"
-              label="创建用户"
-              readonly
+                v-model="product.managerId"
+                label="创建用户"
+                readonly
             ></v-text-field>
             <v-text-field
-              v-model="product.cost"
-              label="商品价格(元)"
-              readonly
+                v-model="product.cost"
+                label="商品价格(元)"
+                readonly
             ></v-text-field>
           </form>
           <v-btn @click="buyProduct">{{
-            product.cost === 0 ? "免费购买" : "购买商品"
-          }}</v-btn>
+              product.cost === 0 ? "免费购买" : "购买商品"
+            }}</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -113,6 +114,7 @@
       </v-card>
     </v-dialog>
   </div>
+  </body>
 </template>
 
 <script>
@@ -199,4 +201,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+body{
+  background-color: #69f0ae;
+  background-image: url("back.png");
+}
+</style>

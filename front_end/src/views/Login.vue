@@ -1,25 +1,26 @@
 <template>
+  <body>
   <div>
     <v-container class="pl-16 pr-16">
       <!-- alert -->
       <v-alert
-        class="alert"
-        outlined
-        type="success"
-        text
-        v-show="showSuccessDialog"
-        transition="scroll-y-transition"
+          class="alert"
+          outlined
+          type="success"
+          text
+          v-show="showSuccessDialog"
+          transition="scroll-y-transition"
       >
         登录成功，欢迎{{ username }} !
       </v-alert>
       <!-- alert -->
       <v-alert
-        class="alert"
-        outlined
-        type="warning"
-        text
-        v-show="showFailDialog"
-        transition="scroll-y-transition"
+          class="alert"
+          outlined
+          type="warning"
+          text
+          v-show="showFailDialog"
+          transition="scroll-y-transition"
       >
         {{ msg }}
       </v-alert>
@@ -32,21 +33,23 @@
           <h1>二手交易平台</h1>
         </div>
 
-        <v-text-field v-model="phone" label="手机号码"></v-text-field>
+        <v-text-field  v-model="phone" label="手机号码"></v-text-field>
         <v-text-field
-          v-model="password"
-          label="密码"
-          type="password"
+
+            v-model="password"
+            label="密码"
+            type="password"
+
         ></v-text-field>
-        <h2><v-btn class="ml-0 mt-8 info"  @click="handleLogin">
+        <h2><v-btn  class="ml-0 mt-8 info" color="#69f0ae" dark  @click="handleLogin">
           登录
         </v-btn></h2>
       </form>
       <v-btn
-        text
-        color="primary"
-        class="float-right ma-4"
-        @click="
+          text
+
+          class="float-right ma-4"
+          @click="
           () => {
             this.$router.push('/register');
           }
@@ -56,6 +59,7 @@
       </v-btn>
     </v-container>
   </div>
+  </body>
 </template>
 
 <script>
@@ -104,6 +108,10 @@ export default {
 </script>
 
 <style scoped>
+body{
+  background-color: #69f0ae;
+  background-image: url("back.png");
+}
 .form {
   position: relative;
   top: 20px;
@@ -127,6 +135,7 @@ h1{
 }
 h2{
   text-align: center;
+color: #69f0ae;
 }
 
 

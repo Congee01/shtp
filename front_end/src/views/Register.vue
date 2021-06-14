@@ -1,45 +1,49 @@
 <template>
+  <body>
   <div>
     <v-container class="pl-16 pr-16">
       <!-- alert -->
       <v-alert
-        class="alert"
-        outlined
-        type="success"
-        text
-        v-show="showSuccessDialog"
-        transition="scroll-y-transition"
+          color="#69f0ae"
+          class="alert"
+          outlined
+          type="success"
+          text
+          v-show="showSuccessDialog"
+          transition="scroll-y-transition"
       >
         注册成功，欢迎{{ username }} !
       </v-alert>
       <!-- alert -->
       <v-alert
-        class="alert"
-        outlined
-        type="warning"
-        text
-        v-show="showFailDialog"
-        transition="scroll-y-transition"
+          color="#69f0ae"
+          class="alert"
+          outlined
+          type="warning"
+          text
+          v-show="showFailDialog"
+          transition="scroll-y-transition"
       >
         {{ msg }}
       </v-alert>
       <form class="pa-12 grey lighten-5 mt-10 form">
-        <v-text-field v-model="username" label="用户名"></v-text-field>
-        <v-text-field v-model="phone" label="手机号码"></v-text-field>
+        <v-text-field  v-model="username" label="用户名"></v-text-field>
+        <v-text-field  v-model="phone" label="手机号码"></v-text-field>
         <v-text-field
-          v-model="password"
-          type="password"
-          label="密码"
+
+            v-model="password"
+            type="password"
+            label="密码"
         ></v-text-field>
-        <v-btn class="ml-0 mt-8 info" @click="handleRegister">
+        <v-btn class="ml-0 mt-8 info" color="69f0ae" dark @click="handleRegister">
           注册
         </v-btn>
       </form>
       <v-btn
-        text
-        color="primary"
-        class="float-right ma-4"
-        @click="
+          text
+
+          class="float-right ma-4"
+          @click="
           () => {
             this.$router.push('/');
           }
@@ -49,6 +53,7 @@
       </v-btn>
     </v-container>
   </div>
+  </body>
 </template>
 
 <script>
@@ -99,6 +104,10 @@ export default {
 </script>
 
 <style scoped>
+body{
+  background-color: #69f0ae;
+  background-image: url("back.png");
+}
 .form {
   position: relative;
   top: 50px;

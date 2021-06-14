@@ -1,9 +1,11 @@
 <template>
+  <body>
   <v-app>
     <div>
       <router-view />
     </div>
   </v-app>
+  </body>
 </template>
 
 <script lang="ts">
@@ -21,6 +23,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+body{
+  background-color: #69f0ae;
+  background-image: url("back.png");
+}
 a {
   text-decoration: none;
 }

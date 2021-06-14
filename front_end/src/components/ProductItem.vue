@@ -1,13 +1,14 @@
 <template>
-
+  <body>
   <v-card class="ma-4 pa-2"   >
     <v-card-title class="ma-4 pa-2">
+
       <h1>商品名称：{{ productName }}</h1>
       <v-chip
-        small
-        class="ml-4"
-        v-show="status === 1 || status === 0"
-        :color="chipColor[status]"
+          small
+          class="ml-4"
+          v-show="status === 1 || status === 0"
+          :color="chipColor[status]"
       >
         {{ chip[status] }}
       </v-chip>
@@ -24,6 +25,9 @@
       </v-btn></h3>
     </v-card-action>
   </v-card>
+  </body>
+
+
 </template>
 
 <script lang="ts">
@@ -96,21 +100,29 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+body{
+  background-image: url("background.jpg");
+background-color: #69f0ae;
+}
 h1 {
-  font-weight: normal;
+  font-family: "Arial Black";
+  font-weight: bolder;
   font-size: large;
-  color: #3d5afe;
+  color: #69f0ae;
 }
 h2 {
+  color: #69f0ae;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
 }
 h3{
+
   text-align: right;
 }
 .text {
+  color: #69f0ae;
   font-size: large;
   font-weight: bold;
   height: 85px;

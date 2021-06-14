@@ -1,4 +1,5 @@
 <template>
+  <body>
   <div>
     <!-- alert -->
     <v-alert
@@ -39,7 +40,7 @@
     </template>
     <template>
       <div>
-        <v-app-bar color="#409EFF" dense dark>
+        <v-app-bar color="#69f0ae" dense dark>
           <v-app-bar-nav-icon @click="direct('/user')">
             <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
           >
@@ -93,7 +94,7 @@
             label="账户余额"
             readonly
         ></v-text-field>
-        <v-btn color="primary" dark @click.stop="dialog = true">
+        <v-btn color="#69f0ae" dark @click.stop="dialog = true">
           充值
         </v-btn>
         <v-spacer></v-spacer>
@@ -102,6 +103,7 @@
       </form>
     </v-container>
   </div>
+  </body>
 </template>
 
 <script>
@@ -188,6 +190,10 @@ export default {
 </script>
 
 <style scoped>
+body{
+  background-color: #00b0ff;
+  background-image: url("back.png");
+}
 .alert {
   position: fixed;
   left: 50%;

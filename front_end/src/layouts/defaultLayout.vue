@@ -1,4 +1,5 @@
 <template>
+  <body>
   <div>
     <v-app-bar color="cyan darken-3" dense dark>
       <v-app-bar-nav-icon @click="direct('/')">
@@ -16,6 +17,7 @@
     </v-app-bar>
     <router-view />
   </div>
+  </body>
 </template>
 
 <script>
@@ -35,6 +37,10 @@ export default {
 </script>
 
 <style scoped>
+body{
+  background-image: url("back.png");
+  background-color: #69f0ae;
+}
 .cursor {
   cursor: pointer;
 }

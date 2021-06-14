@@ -1,6 +1,8 @@
 <template>
+
+  <body>
   <div>
-    <v-app-bar color="#409EFF" dense dark>
+    <v-app-bar color="#69f0ae" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -20,9 +22,9 @@
 
         <v-list>
           <v-list-item
-            v-for="opt in optionList"
-            :key="opt.optionName"
-            @click="direct(opt.link)"
+              v-for="opt in optionList"
+              :key="opt.optionName"
+              @click="direct(opt.link)"
           >
             <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
           </v-list-item>
@@ -31,10 +33,10 @@
     </v-app-bar>
     <v-container class="ma-8 pa-4">
       <v-card
-        v-for="o in orderList"
-        :key="o.id"
-        :color="colorList[o.id % colorList.length]"
-        class="ma-8 pa-4"
+          v-for="o in orderList"
+          :key="o.id"
+          :color="colorList[o.id % colorList.length]"
+          class="ma-8 pa-4"
       >
         <v-card-title class="headline">
           {{ o.productName }}
@@ -47,6 +49,7 @@
       </v-card>
     </v-container>
   </div>
+  </body>
 </template>
 
 <script>
@@ -109,3 +112,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+body{
+
+  background-color: #00b0ff;
+}
+
+</style>
