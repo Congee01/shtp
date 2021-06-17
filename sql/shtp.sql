@@ -34,11 +34,6 @@ CREATE TABLE `product` (
                           CONSTRAINT `fk_user_course` FOREIGN KEY (`manager_id`) REFERENCES `user_info` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of course
--- ----------------------------
-INSERT INTO `product` VALUES ('1', '软件工程与计算 I', '通过Scheme、Python和Java语言，让你分别体会函数式编程范式、结构化编程范式和面向对象编程范式', null, '2020-12-20 10:00:00', null, 100, 1, '刘钦');
-INSERT INTO `product` VALUES ('2', '软件工程与计算 II', '基于DevOps培养团队开发中小规模软件系统的能力', null,  '2020-12-20 10:00:00', null, 100, 1, '刘钦');
 
 -- ----------------------------
 -- Table structure for `course_order`

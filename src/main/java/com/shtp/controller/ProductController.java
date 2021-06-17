@@ -26,7 +26,7 @@ public class ProductController {
     public PageInfo<ProductVO> getProductsByKey(@RequestParam(required = false, defaultValue = "") Integer uid,
                                               @RequestParam(required = false, defaultValue = "") String key,
                                               @PathVariable Integer page) {
-        return productService.getProducts(page, Constant.COURSE_PAGE_SIZE, uid, key);
+        return productService.getProducts(page, Constant.PRODUCT_PAGE_SIZE, uid, key);
     }
 
 

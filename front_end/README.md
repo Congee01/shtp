@@ -1,4 +1,4 @@
-# course-learning
+# second-hand-trading-platform
 
 ## Project setup
 ```

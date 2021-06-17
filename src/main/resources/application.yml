@@ -1,7 +1,6 @@
 server:
   port: 8081
 
-upload-path:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/shtp?setUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
@@ -20,16 +19,10 @@ spring:
 # 设置日志输出
 logging:
   level:
-    #cn.seecoder.courselearning.mapperservice: DEBUG
     shtp.service: DEBUG
-#  file:
-#    path: D:/courselearning/
+
 
 
 # 自定义标签 ${web.file-upload-path} 用于存储向服务器上传的文件
-#web:
- # file-upload-path: /front_end/src/assets/
-#web:
-#  file-upload-path: D:/courselearning/upload/
 web:
-  file-upload-path: C:/Users/86138/Desktop/计网大作业/Second-hand-trading-platform/front_end/src/assets/
+  file-upload-path: D:\shtp\front_end\src\assets\

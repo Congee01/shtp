@@ -29,11 +29,5 @@ public class ImgController {
         return ImgService.uploadFile(file);
     }
 
-    @PostMapping("/upload1")
-    public  String upload1(MultipartFile file) throws IOException {
-        String extName=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        String fileName= UUID.randomUUID().toString()+extName;
-        FileCopyUtils.copy(file.getInputStream(),new FileOutputStream(path+fileName));
-        return fileName;
-    }
+
 }
