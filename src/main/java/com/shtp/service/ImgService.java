@@ -5,5 +5,5 @@ import com.shtp.vo.ResultVO;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ImgService {
-    ResultVO<ImgInfoVO> uploadFile(MultipartFile file);
+    ResultVO<ImgInfoVO> uploadImg(MultipartFile file);
 }

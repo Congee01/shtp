@@ -1,7 +1,7 @@
 <template>
   <body>
-  <v-card class="ma-4 pa-2"   >
-    <v-card-title class="ma-4 pa-2">
+  <v-card class="ma-4 pa-2" >
+    <v-card-title class="ma-4 pa-2" >
 
       <h1>商品名称：{{ productName }}</h1>
       <v-chip
@@ -67,7 +67,7 @@ export default Vue.extend({
   data() {
     return {
       chip: ["免费", "已购"],
-      chipColor: ["success", "primary"],
+      chipColor: ["primary", "success"],
       pictureUrl: require("../assets/"+this.picture),
     };
   },
@@ -81,9 +81,9 @@ export default Vue.extend({
   },
   computed: {
     text: function() {
-      return this.description.length < 30
+      return this.description.length < 20
         ? this.description
-        : this.description.substring(0, 30) + "...";
+        : this.description.substring(0, 20) + "...";
     },
 
     // 0 免费  1 已购
@@ -118,7 +118,6 @@ h2 {
   z-index: 1;
 }
 h3{
-
   text-align: right;
 }
 .text {
@@ -127,5 +126,9 @@ h3{
   font-weight: bold;
   height: 85px;
   overflow: hidden;
+}
+img{
+  width: 300px;
+  height: 300px;
 }
 </style>

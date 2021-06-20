@@ -1,7 +1,6 @@
 package com.shtp.controller;
 
 
-import com.shtp.po.Product;
 import com.shtp.service.ProductOrderService;
 import com.shtp.vo.ProductOrderVO;
 import com.shtp.vo.ResultVO;
@@ -28,8 +27,4 @@ public class ProductOrderController {
     }
 
 
-    @PostMapping("/update")
-    public ResultVO<ProductOrderVO> updateProductOrderStatus(@RequestParam Integer orderId, @RequestParam Integer orderStatus){
-        return productOrderService.updateCourseOrder(orderId,orderStatus);
-    }
 }

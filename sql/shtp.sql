@@ -33,7 +33,7 @@ CREATE TABLE `product` (
                           KEY `fk_user_course` (`manager_id`),
                           CONSTRAINT `fk_user_course` FOREIGN KEY (`manager_id`) REFERENCES `user_info` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+INSERT INTO `product` VALUES ('1', '微积分', '好东西', 'defaultImg', '2021-05-29 10:00:00',null,10,1,'小明');
 
 -- ----------------------------
 -- Table structure for `course_order`

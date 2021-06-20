@@ -10,7 +10,7 @@
     </v-card-text>
     <v-card-action>
       <router-link :to="`/user/edit/${productId}`">
-        <h3><v-btn text v-show="manageable">管理商品</v-btn></h3>
+        <h3><v-btn v-show="manageable">管理商品</v-btn></h3>
       </router-link>
     </v-card-action>
   </v-card>
@@ -57,9 +57,9 @@ export default {
   },
   computed: {
     text: function() {
-      return this.description.length < 30
+      return this.description.length < 20
           ? this.description
-          : this.description.substring(0, 30) + "...";
+          : this.description.substring(0, 20) + "...";
     },
   },
 }
@@ -77,7 +77,6 @@ h1 {
   color: #69f0ae;
 }
 h3{
-
   text-align: right;
 }
 .text {
@@ -86,5 +85,9 @@ h3{
 
   height: 85px;
   overflow: hidden;
+}
+img{
+  width: 300px;
+  height: 300px;
 }
 </style>

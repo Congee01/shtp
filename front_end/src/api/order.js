@@ -15,13 +15,6 @@ export const createOrder = payload => {
     });
 };
 
-export const updateOrder = payload => {
-  const { orderId, orderStatus } = payload;
-  return axios.post(`${ORDER_MODULE}/update?orderId=${orderId}&orderStatus=${orderStatus}`).then(res => {
-      return res.data;
-    });
-};
-
 export const getOrdersByUser = uid => {
   return axios.get(`${ORDER_MODULE}/uid/${uid}`).then(res => {
     return res.data;

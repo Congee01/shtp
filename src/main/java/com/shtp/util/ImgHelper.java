@@ -4,18 +4,12 @@ import com.shtp.enums.ExceptionType;
 import com.shtp.exception.MyException;
 import com.shtp.vo.ImgInfoVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.UUID;
 
 @Slf4j
@@ -28,7 +22,7 @@ public class ImgHelper {
      */
     public static ImgInfoVO save(String directoryPath, MultipartFile file) throws IOException {
         if(!checkDirectoryPath(directoryPath)){
-            throw MyException.of(ExceptionType.SERVER_ERROR, "服务器端错误，用于存放上传文件的文件夹不存在或创建失败！");
+            throw MyException.of(ExceptionType.SERVER_ERROR, "服务器端错误，用于存放上传图片的文件夹不存在或创建失败！");
         }
         // 原文件名
         String originalName = file.getOriginalFilename();
@@ -52,24 +46,6 @@ public class ImgHelper {
         return new ImgInfoVO(newPath,newName, type, size);
     }
 
-    /**
-     * 加载文件为资源
-     * @param directoryPath 目录路径（以 / 结尾）
-     * @param fileName 文件名
-     * @return 输入流资源
-     */
-    public static Resource loadFileAsResource(String directoryPath, String fileName) {
-        try {
-            Path filePath = Paths.get(directoryPath+fileName);
-            Resource resource = new UrlResource(filePath.toUri());
-            if(resource.exists())
-                return resource;
-        } catch (MalformedURLException ex) {
-            throw MyException.of(ExceptionType.SERVER_ERROR, "服务端错误，加载文件资源时出错！");
-        }
-        return null;
-    }
-
     public static boolean delete(String directoryPath, String fileName){
         if(StringUtils.hasText(fileName)){
             File file = new File(directoryPath + fileName);
@@ -90,7 +66,7 @@ public class ImgHelper {
         File dir = new File(directoryPath);
         // 如果文件夹不存在则创建
         if(!dir.exists() && !dir.isDirectory()){
-            log.debug("用于存放上传文件的文件夹不存在，正在尝试创建..");
+            log.debug("用于存放上传图片的文件夹不存在，正在尝试创建..");
             return dir.mkdirs();
         }
         return true;

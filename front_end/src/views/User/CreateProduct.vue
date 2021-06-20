@@ -114,7 +114,7 @@ export default {
         bought: false,
         manageable: true,
       };
-      console.log("zz")
+      console.log("submit")
       console.log(payload);
       createProduct(payload).then((res) => {
         console.log(res);

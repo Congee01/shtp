@@ -92,11 +92,12 @@
             cols="12"
             md="4"
             v-for="product in boughtProductList"
-            :key="product"
+            :key="product.id"
             :productName="product.name"
             :productId="product.id"
             :description="product.intro"
             :cost="product.cost"
+            :picture="product.picture"
             :bought="product.bought"
             :manageable="product.manageable"
             @buy-course="showDialog"
@@ -110,7 +111,6 @@
 
 <script>
 import ProductItem from "@/components/ProductItem.vue";
-import { createOrder } from "@/api/order";
 import { getBoughtProduct, getProductByKey } from "@/api/product";
 
 export default {
@@ -177,6 +177,7 @@ export default {
       window.localStorage.removeItem("userPhone");
       window.localStorage.removeItem("username");
     },
+
     showDialog(productId, productName, productPrice) {
       this.currentProductId = productId;
       this.currentProductName = productName;
@@ -184,25 +185,8 @@ export default {
       this.dialog = true;
     },
 
-    handleBuyCourse() {
-      const uid = window.localStorage.getItem("userId");
-      createOrder({
-        productId: this.currentProductId,
-        productName: this.currentProductName,
-        cost: this.currentProductPrice,
-        userId: uid,
-        status: 2
-      }).then(res => {
-        this.dialog = false;
-        this.msg =
-          (res.code === 1 ? "「购买成功」！" : "「购买失败」！") + res.msg;
-        this.dialog2 = true;
-        this.getUserBoughtCourses();
-      });
-    },
-
     handleSearchProduct() {
-      console.log("1");
+      console.log("search");
       const uid = window.localStorage.getItem("userId");
       getProductByKey({
         uid,
@@ -216,7 +200,7 @@ export default {
     },
 
     getUserBoughtProducts() {
-      console.log("2");
+      console.log("buy");
       const uid = window.localStorage.getItem("userId");
       getBoughtProduct(uid).then(res => {
         console.log(res);

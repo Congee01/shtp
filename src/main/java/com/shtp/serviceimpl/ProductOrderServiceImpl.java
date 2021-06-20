@@ -56,25 +56,6 @@ public class ProductOrderServiceImpl implements ProductOrderService {
         return new ResultVO<>(Constant.REQUEST_SUCCESS, "商品购买成功", new ProductOrderVO(order));
     }
 
-    @Override
-    public ResultVO<ProductOrderVO> updateCourseOrder(Integer orderId, Integer orderStatus) {
-        ProductOrder order = productOrderMapper.selectByPrimaryKey(orderId);
-        if(order == null) return new ResultVO<>(Constant.REQUEST_FAIL, "找不到当前订单！");
-        if(order.getStatus().equals(Constant.ORDER_STATUS_SUCCESS))
-            return new ResultVO<>(Constant.REQUEST_FAIL, "当前订单已完成交易，不支持再次修改订单状态！", new ProductOrderVO(order));
-        if((orderStatus.equals(Constant.ORDER_STATUS_SUCCESS)||orderStatus.equals(Constant.ORDER_STATUS_WAIT)) &&
-                order.getStatus().equals(Constant.ORDER_STATUS_UNPAID)){
-            // 当订单原始状态为待支付 并且此时为支付成功时，需扣除用户余额
-            User user = userMapper.selectByPrimaryKey(order.getUserId());
-            if(user.getBalance()>=order.getCost()){
-                userMapper.decreaseBalance(user.getId(), order.getCost());
-            }else
-                return new ResultVO<>(Constant.REQUEST_FAIL, "用户余额不足");
-        }
-        order.setStatus(orderStatus);
-        productOrderMapper.updateByPrimaryKey(order);
-        return new ResultVO<>(Constant.REQUEST_SUCCESS, "课程购买成功", new ProductOrderVO(order));
-    }
 
     @Override
     public List<ProductOrderVO> getProductOrders(Integer uid) {
