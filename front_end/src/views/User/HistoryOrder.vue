@@ -113,9 +113,5 @@ export default {
 };
 </script>
 <style scoped>
-body{
-
-  background-color: #00b0ff;
-}
 
 </style>

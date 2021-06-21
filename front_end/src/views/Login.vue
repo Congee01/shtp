@@ -1,6 +1,5 @@
 <template>
-  <body>
-  <div>
+  <div id="back">
     <v-container class="pl-16 pr-16">
       <!-- alert -->
       <v-alert
@@ -59,7 +58,6 @@
       </v-btn>
     </v-container>
   </div>
-  </body>
 </template>
 
 <script>
@@ -108,10 +106,6 @@ export default {
 </script>
 
 <style scoped>
-body{
-  background-color: #69f0ae;
-  background-image: url("back.png");
-}
 .form {
   position: relative;
   top: 20px;
@@ -135,8 +129,6 @@ h1{
 }
 h2{
   text-align: center;
-color: #69f0ae;
+  color: #69f0ae;
 }
-
-
 </style>

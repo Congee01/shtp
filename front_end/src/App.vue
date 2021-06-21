@@ -23,9 +23,14 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-body{
-  background-color: #69f0ae;
+#app{
   background-image: url("back.png");
+  background-size: cover;
+  margin:0;
+  padding:0
+}
+body{
+
 }
 a {
   text-decoration: none;

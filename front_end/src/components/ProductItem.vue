@@ -13,7 +13,8 @@
         {{ chip[status] }}
       </v-chip>
     </v-card-title>
-    <h2><img :src="pictureUrl" alt="Tulip" /></h2>
+    <v-spacer></v-spacer>
+    <img :src="pictureUrl" alt="Tulip" />
 
     <v-card-text class="text">
       {{ text}}
@@ -102,7 +103,7 @@ export default Vue.extend({
 <style scoped>
 body{
   background-image: url("background.jpg");
-background-color: #69f0ae;
+  background-color: #69f0ae;
 }
 h1 {
   font-family: "Arial Black";
@@ -110,13 +111,7 @@ h1 {
   font-size: large;
   color: #69f0ae;
 }
-h2 {
-  color: #69f0ae;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
+
 h3{
   text-align: right;
 }
@@ -130,5 +125,6 @@ h3{
 img{
   width: 300px;
   height: 300px;
+  border: 3px solid #69f0ae;
 }
 </style>

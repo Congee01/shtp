@@ -94,7 +94,7 @@
             label="账户余额"
             readonly
         ></v-text-field>
-        <v-btn color="#69f0ae" dark @click.stop="dialog = true">
+        <v-btn color="#00b0ff" dark @click.stop="dialog = true">
           充值
         </v-btn>
         <v-spacer></v-spacer>

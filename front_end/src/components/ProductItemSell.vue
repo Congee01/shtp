@@ -89,5 +89,6 @@ h3{
 img{
   width: 300px;
   height: 300px;
+  border: 3px solid #69f0ae;
 }
 </style>
