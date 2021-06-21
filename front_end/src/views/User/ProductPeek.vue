@@ -7,7 +7,7 @@
       >
 
       <v-toolbar-title @click="direct('/user')" class="cursor">
-        Second-Hand-Trading-Platform
+        欢迎进入二手交易平台
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -137,6 +137,10 @@ export default {
         {
           optionName: "我要当卖家",
           link: `/user/${window.localStorage.getItem("userId")}/sell`
+        },
+        {
+          optionName: "我的购买",
+          link: `/user/${window.localStorage.getItem("userId")}/bought`
         },
         {
           optionName: "登出",

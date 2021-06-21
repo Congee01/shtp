@@ -7,7 +7,7 @@
       >
 
       <v-toolbar-title @click="direct('/user')" class="cursor">
-        Second-Hand-Trading-Platform
+        欢迎进入二手交易平台
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -33,14 +33,6 @@
     <v-container class="ma-8 pa-4">
       <!-- 搜索商品 -->
       <v-row class="mt-10">
-        <v-col>
-          <v-chip color="#69f0ae" label text-color="white">
-            <v-icon left>
-              SHTP
-            </v-icon>
-            搜索商品
-          </v-chip>
-        </v-col>
         <v-col>
           <v-text-field
               v-model="searchText"
@@ -79,31 +71,6 @@
       <v-row class="ma-12">
         <v-divider></v-divider>
       </v-row>
-      <v-row class="mt-8 mb-2">
-        <v-chip class="ma-2" color="#69f0ae" label text-color="white">
-          <v-icon left>
-            SHTP
-          </v-icon>
-          我已经购买的商品
-        </v-chip>
-      </v-row>
-      <v-row>
-        <product-item
-            cols="12"
-            md="4"
-            v-for="product in boughtProductList"
-            :key="product.id"
-            :productName="product.name"
-            :productId="product.id"
-            :description="product.intro"
-            :cost="product.cost"
-            :picture="product.picture"
-            :bought="product.bought"
-            :manageable="product.manageable"
-            @buy-course="showDialog"
-        >
-        </product-item>
-      </v-row>
     </v-container>
   </div>
   </body>
@@ -111,7 +78,7 @@
 
 <script>
 import ProductItem from "@/components/ProductItem.vue";
-import { getBoughtProduct, getProductByKey } from "@/api/product";
+import { getProductByKey } from "@/api/product";
 
 export default {
   name: "HomePage",
@@ -135,6 +102,10 @@ export default {
           link: `/user/${window.localStorage.getItem("userId")}/sell`
         },
         {
+          optionName: "我的购买",
+          link: `/user/${window.localStorage.getItem("userId")}/bought`
+        },
+        {
           optionName: "登出",
           link: "/"
         }
@@ -150,8 +121,6 @@ export default {
       searchProduct: [],
       searchTotalPage: 1,
       searchCurrentPage: 1,
-      //
-      boughtProductList: []
     };
   },
   watch: {
@@ -198,19 +167,9 @@ export default {
         this.searchTotalPage = res.pages;
       });
     },
-
-    getUserBoughtProducts() {
-      console.log("buy");
-      const uid = window.localStorage.getItem("userId");
-      getBoughtProduct(uid).then(res => {
-        console.log(res);
-        this.boughtProductList = res || [];
-      });
-    }
   },
   mounted() {
     this.handleSearchProduct();
-    this.getUserBoughtProducts();
   }
 };
 </script>

@@ -7,7 +7,7 @@
       >
 
       <v-toolbar-title @click="direct('/user')" class="cursor">
-        Second-Hand-Trading-Platform
+        欢迎进入二手交易平台
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -33,10 +33,8 @@
     <v-container class="ma-8 pa-4">
       <v-row>
         <router-link :to="`/user/:userId/create`">
-          <v-btn class="ma-4 mb-8" fab dark color="indigo">
-            <v-icon dark large>
-              mdi-plus
-            </v-icon>
+          <v-btn class="ma-4 mb-8" dark color="indigo">
+            创建商品
           </v-btn>
         </router-link>
       </v-row>
@@ -85,6 +83,10 @@ export default {
         {
           optionName: "我要当卖家",
           link: `/user/${window.localStorage.getItem("userId")}/sell`
+        },
+        {
+          optionName: "我的购买",
+          link: `/user/${window.localStorage.getItem("userId")}/bought`
         },
         {
           optionName: "登出",

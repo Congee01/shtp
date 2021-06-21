@@ -9,6 +9,7 @@ import HistoryOrder from "@/views/User/HistoryOrder";
 import SellProduct from "@/views/User/SellProduct";
 import EditProduct from "@/views/User/EditProduct";
 import CreateProduct from "@/views/User/CreateProduct";
+import BoughtProduct from "@/views/User/BoughtProduct";
 Vue.use(VueRouter);
 
 const routes = [
@@ -63,6 +64,11 @@ const routes = [
     path: "/user/edit/:productId",
     name: "EditProduct",
     component: EditProduct
+  },
+  {
+    path: "/user/:userId/bought",
+    name: "BoughtProduct",
+    component: BoughtProduct
   }
 ];
 

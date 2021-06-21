@@ -33,54 +33,44 @@
       </v-app-bar>
     </div>
   </template>
-  <v-container class="pl-16 pr-16">
-    <form class="pa-12 grey lighten-5 mt-8">
-    <v-text-field
-        v-model="productInfo.id"
-        label="商品ID"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.name"
-        label="商品名称"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.intro"
-        label="商品简介"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.cost"
-        label="商品价格"
-    ></v-text-field>
-
-    <v-text-field
-        v-model="productInfo.createTime"
-        label="创建时间"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.managerName"
-        label="创建用户名称"
-    ></v-text-field>
-    <v-btn @click="handleEditSubmit">
-      Save
-    </v-btn>
-    <router-link :to="`/user/:userId/sell`">
-      <v-btn>
-        close
-      </v-btn>
-    </router-link>
-    </form>
+  <v-container class="ma-8 pa-4">
+  <v-row>
+    <product-item
+        cols="12"
+        md="4"
+        v-for="product in boughtProductList"
+        :key="product.id"
+        :productName="product.name"
+        :productId="product.id"
+        :description="product.intro"
+        :cost="product.cost"
+        :picture="product.picture"
+        :bought="product.bought"
+        :manageable="product.manageable"
+        @buy-course="showDialog"
+    >
+    </product-item>
+  </v-row>
   </v-container>
   </body>
 </template>
 
 <script>
-import {getProductById, updateProduct} from "@/api/product";
-
+import {getBoughtProduct} from "@/api/product";
+import ProductItem from "@/components/ProductItem";
 
 export default {
-  name: "EditProduct",
+  name: "BoughtProduct",
+  components: {
+    ProductItem
+  },
   data() {
     return {
+      boughtProductList: [],
+      currentProductId:"",
+      currentProductName:"",
+      currentProductPrice:"",
+      dialog:false,
       optionList: [
         {
           optionName: "历史订单",
@@ -103,45 +93,9 @@ export default {
           link: "/",
         },
       ],
-      productInfo:{},
-      currentEditProduct: {
-        productId: "",
-        productName: "",
-        intro: "",
-        picture:"",
-        createTime: "",
-        deleteTime: "",
-        cost: 0,
-        managerId: "",
-        managerName: "",
-      },
-    };
+    }
   },
-  methods: {
-    loadProduct() {
-      console.log("load")
-      const { productId } = this.$route.params;
-      const uid = window.localStorage.getItem("userId");
-      getProductById({ uid, productId }).then(res => {
-        console.log(res);
-        this.productInfo = res;
-        this.currentEditProduct=res;
-        console.log(this.currentEditProduct);
-        console.log(this.productInfo);
-      });
-    },
-    handleEditSubmit() {
-      console.log("edit");
-      updateProduct(this.productInfo).then((res) => {
-        this.dialog = false;
-        console.log(res);
-        this.alertMsg = res.msg;
-        this.showAlert = true;
-        setTimeout(() => {
-          this.showAlert = false;
-        }, 1000);
-      });
-    },
+  methods:{
     direct(link) {
       if (link === "/") {
         this.logout();
@@ -155,14 +109,27 @@ export default {
       window.localStorage.removeItem("userPhone");
       window.localStorage.removeItem("username");
     },
+    showDialog(productId, productName, productPrice) {
+      this.currentProductId = productId;
+      this.currentProductName = productName;
+      this.currentProductPrice = productPrice;
+      this.dialog = true;
+    },
+    getUserBoughtProducts() {
+      console.log("buy");
+      const uid = window.localStorage.getItem("userId");
+      getBoughtProduct(uid).then(res => {
+        console.log(res);
+        this.boughtProductList = res || [];
+      });
+    }
   },
   mounted() {
-    this.loadProduct();
-  },
-};
+    this.getUserBoughtProducts();
+  }
+}
 </script>
 
 <style scoped>
-body{
-}
+
 </style>
