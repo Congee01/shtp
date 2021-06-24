@@ -1,71 +1,43 @@
 <template>
-  <body>
   <div id="layout">
-    <v-app-bar color="#69f0ae" dense dark>
-      <v-app-bar-nav-icon @click="direct('/user')">
-        <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
-      >
+    <app-bar />
 
-      <v-toolbar-title @click="direct('/user')" class="cursor">
-        欢迎进入二手交易平台
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-menu left bottom>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item
-              v-for="opt in optionList"
-              :key="opt.optionName"
-              @click="direct(opt.link)"
-          >
-            <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
     <v-container class="ma-8 pa-4">
       <!-- 搜索商品 -->
       <v-row class="mt-10">
         <v-col>
           <v-text-field
-              v-model="searchText"
-              outlined
-              label="搜索商品"
-              append-icon="mdi-magnify"
+            v-model="searchText"
+            outlined
+            label="搜索商品"
+            append-icon="mdi-magnify"
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row>
         <product-item
-            cols="12"
-            md="4"
-            v-for="product in searchProduct"
-            :key="product.id"
-            :productName="product.name"
-            :productId="product.id"
-            :description="product.intro"
-            :cost="product.cost"
-            :picture="product.picture"
-            :bought="product.bought"
-            :manageable="product.manageable"
-            @buy-product="showDialog"
+          cols="12"
+          md="4"
+          v-for="product in searchProduct"
+          :key="product.id"
+          :productName="product.name"
+          :productId="product.id"
+          :description="product.intro"
+          :cost="product.cost"
+          :picture="product.picture"
+          :bought="product.bought"
+          :manageable="product.manageable"
+          @buy-product="showDialog"
         >
         </product-item>
       </v-row>
       <v-row class="d-flex justify-center">
         <v-pagination
-            color="#69f0ae"
-            class="mt-4"
-            v-model="searchCurrentPage"
-            :length="searchTotalPage"
-            circle
+          color="#ec9830"
+          class="mt-4"
+          v-model="searchCurrentPage"
+          :length="searchTotalPage"
+          circle
         ></v-pagination>
       </v-row>
       <v-row class="ma-12">
@@ -73,17 +45,18 @@
       </v-row>
     </v-container>
   </div>
-  </body>
 </template>
 
 <script>
 import ProductItem from "@/components/ProductItem.vue";
 import { getProductByKey } from "@/api/product";
+import AppBar from "@/components/AppBar.vue";
 
 export default {
   name: "HomePage",
   components: {
-    ProductItem
+    ProductItem,
+    AppBar,
   },
   data() {
     return {
@@ -91,24 +64,24 @@ export default {
       optionList: [
         {
           optionName: "历史订单",
-          link: `/user/${window.localStorage.getItem("userId")}/history`
+          link: `/user/${window.localStorage.getItem("userId")}/history`,
         },
         {
           optionName: "个人中心",
-          link: `/user/${window.localStorage.getItem("userId")}`
+          link: `/user/${window.localStorage.getItem("userId")}`,
         },
         {
           optionName: "我要当卖家",
-          link: `/user/${window.localStorage.getItem("userId")}/sell`
+          link: `/user/${window.localStorage.getItem("userId")}/sell`,
         },
         {
           optionName: "我的购买",
-          link: `/user/${window.localStorage.getItem("userId")}/bought`
+          link: `/user/${window.localStorage.getItem("userId")}/bought`,
         },
         {
           optionName: "登出",
-          link: "/"
-        }
+          link: "/",
+        },
       ],
       dialog: false,
       dialog2: false,
@@ -130,23 +103,9 @@ export default {
 
     searchText: function() {
       this.handleSearchProduct();
-    }
+    },
   },
   methods: {
-    direct(link) {
-      if (link === "/") {
-        this.logout();
-      }
-      if (this.$route.path !== link) {
-        this.$router.push(link);
-      }
-    },
-    logout() {
-      window.localStorage.removeItem("userId");
-      window.localStorage.removeItem("userPhone");
-      window.localStorage.removeItem("username");
-    },
-
     showDialog(productId, productName, productPrice) {
       this.currentProductId = productId;
       this.currentProductName = productName;
@@ -160,8 +119,8 @@ export default {
       getProductByKey({
         uid,
         key: this.searchText,
-        page: this.searchCurrentPage
-      }).then(res => {
+        page: this.searchCurrentPage,
+      }).then((res) => {
         console.log(res);
         this.searchProduct = res.list;
         this.searchTotalPage = res.pages;
@@ -170,13 +129,12 @@ export default {
   },
   mounted() {
     this.handleSearchProduct();
-  }
+  },
 };
 </script>
 
 <style scoped>
-body{
-  background-color: #69f0ae;
-  background-image: url("back.png");
+body {
+  color: #47341d;
 }
 </style>

@@ -3,52 +3,51 @@
     <v-container class="pl-16 pr-16">
       <!-- alert -->
       <v-alert
-          class="alert"
-          outlined
-          type="success"
-          text
-          v-show="showSuccessDialog"
-          transition="scroll-y-transition"
+        class="alert"
+        outlined
+        type="success"
+        text
+        v-show="showSuccessDialog"
+        transition="scroll-y-transition"
       >
         登录成功，欢迎{{ username }} !
       </v-alert>
       <!-- alert -->
       <v-alert
-          class="alert"
-          outlined
-          type="warning"
-          text
-          v-show="showFailDialog"
-          transition="scroll-y-transition"
+        class="alert"
+        outlined
+        type="warning"
+        text
+        v-show="showFailDialog"
+        transition="scroll-y-transition"
       >
         {{ msg }}
       </v-alert>
 
       <div class="in-middle">
-        <img :src="img" alt="Tulip"/>
+        <img class="logo" :src="img" alt="Tulip" />
       </div>
-      <form class="pa-12 grey lighten-5 mt-10 form">
+      <form class="pa-12 grey lighten-5 form">
         <div class="title">
           <h1>二手交易平台</h1>
         </div>
 
-        <v-text-field  v-model="phone" label="手机号码"></v-text-field>
+        <v-text-field v-model="phone" label="手机号码"></v-text-field>
         <v-text-field
-
-            v-model="password"
-            label="密码"
-            type="password"
-
+          v-model="password"
+          label="密码"
+          type="password"
         ></v-text-field>
-        <h2><v-btn  class="ml-0 mt-8 info" color="#69f0ae" dark  @click="handleLogin">
-          登录
-        </v-btn></h2>
+        <h2>
+          <v-btn class="ml-0 mt-8 info" color="warning" @click="handleLogin">
+            登录
+          </v-btn>
+        </h2>
       </form>
       <v-btn
-          text
-
-          class="float-right ma-4"
-          @click="
+        text
+        class="float-right ma-4"
+        @click="
           () => {
             this.$router.push('/register');
           }
@@ -73,7 +72,7 @@ export default {
       showFailDialog: false,
       msg: "",
       username: "",
-      img: require("../assets/网站标题.png"),
+      img: require("../assets/final_logo.png"),
     };
   },
   methods: {
@@ -90,7 +89,7 @@ export default {
           setTimeout(() => {
             this.showSuccessDialog = false;
           }, 1000);
-          this.$router.push("/user")
+          this.$router.push("/user");
         } else {
           this.msg = res.msg;
           this.showFailDialog = true;
@@ -108,7 +107,11 @@ export default {
 <style scoped>
 .form {
   position: relative;
-  top: 20px;
+  top: -20px;
+}
+.v-application .grey.lighten-5.form {
+  background-color: unset !important;
+  /* filter: blur(2px); */
 }
 .alert {
   position: fixed;
@@ -116,18 +119,21 @@ export default {
   top: 100px;
   z-index: 999;
 }
-.in-middle{
+.in-middle {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   z-index: 1;
 }
-h1{
-  font-family: "Calibri Light",serif;
+.in-middle > .logo {
+  height: 300px;
+}
+h1 {
+  font-family: "Calibri Light", serif;
   font-weight: bolder;
   text-align: center;
 }
-h2{
+h2 {
   text-align: center;
   color: #69f0ae;
 }

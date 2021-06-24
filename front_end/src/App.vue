@@ -23,8 +23,17 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+:root {
+  --light-font: #ffffff;
+  --dark-font: #000000;
+}
+
+html {
+  overflow: auto;
+}
 #app{
-  background-image: url("back.png");
+  background-image: url("./assets/bg.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
   margin:0;
   padding:0

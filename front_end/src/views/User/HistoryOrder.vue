@@ -2,7 +2,7 @@
 
   <body>
   <div>
-    <v-app-bar color="#69f0ae" dense dark>
+    <v-app-bar color="#47341d" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -35,7 +35,7 @@
       <v-card
           v-for="o in orderList"
           :key="o.id"
-          :color="colorList[o.id % colorList.length]"
+          :color="ffffff"
           class="ma-8 pa-4"
       >
         <v-card-title class="headline">

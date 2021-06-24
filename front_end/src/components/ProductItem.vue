@@ -1,14 +1,12 @@
 <template>
-  <body>
-  <v-card class="ma-4 pa-2" >
-    <v-card-title class="ma-4 pa-2" >
-
+  <v-card class="ma-4 pa-2">
+    <v-card-title class="ma-4 pa-2">
       <h1>商品名称：{{ productName }}</h1>
       <v-chip
-          small
-          class="ml-4"
-          v-show="status === 1 || status === 0"
-          :color="chipColor[status]"
+        small
+        class="ml-4"
+        v-show="status === 1 || status === 0"
+        :color="chipColor[status]"
       >
         {{ chip[status] }}
       </v-chip>
@@ -17,18 +15,17 @@
     <img :src="pictureUrl" alt="Tulip" />
 
     <v-card-text class="text">
-      {{ text}}
+      {{ text }}
     </v-card-text>
 
     <v-card-action>
-      <h3><v-btn v-show="true" @click="handlePeek">
-        浏览商品
-      </v-btn></h3>
+      <h3>
+        <v-btn v-show="true" color="warning" @click="handlePeek">
+          浏览商品
+        </v-btn>
+      </h3>
     </v-card-action>
   </v-card>
-  </body>
-
-
 </template>
 
 <script lang="ts">
@@ -38,38 +35,38 @@ export default Vue.extend({
   props: {
     productName: {
       type: String,
-      default: "线性代数"
+      default: "线性代数",
     },
     productId: {
       type: Number,
-      default: 0
+      default: 0,
     },
-    picture:{
-      type:String,
-      default: "defaultImg"
+    picture: {
+      type: String,
+      default: "defaultImg",
     },
     description: {
       type: String,
-      default: "商品简介"
+      default: "商品简介",
     },
     cost: {
       type: Number,
-      default: 0
+      default: 0,
     },
     bought: {
       type: Boolean,
-      default: false
+      default: false,
     },
     manageable: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       chip: ["免费", "已购"],
       chipColor: ["primary", "success"],
-      pictureUrl: require("../assets/"+this.picture),
+      // pictureUrl: require("../assets/51231e29-650a-4745-8259-7182183fd722.jpg"),
     };
   },
   methods: {
@@ -78,9 +75,14 @@ export default Vue.extend({
     },
     handlePeek() {
       this.$router.push(`/user/peek/${this.productId}`);
-    }
+    },
   },
   computed: {
+    pictureUrl() {
+      // return `http://localhost:8081/img/${this.picture}`;
+      return require("../assets/" + this.picture);
+      // return `C:\\Users\\Alice Cheang\\Desktop\\shtp\\img\\${this.picture}`
+    },
     text: function() {
       return this.description.length < 20
         ? this.description
@@ -95,36 +97,36 @@ export default Vue.extend({
         return 1;
       }
       return -1;
-    }
-  }
+    },
+
+    chippedColor() {
+      return this.status < 0 ? null : this.chipColor[this.status];
+    },
+  },
 });
 </script>
 
 <style scoped>
-body{
-  background-image: url("background.jpg");
-  background-color: #69f0ae;
-}
 h1 {
   font-family: "Arial Black";
   font-weight: bolder;
   font-size: large;
-  color: #69f0ae;
+  color: #000000;
 }
 
-h3{
+h3 {
   text-align: right;
 }
 .text {
-  color: #69f0ae;
+  color: #000000;
   font-size: large;
   font-weight: bold;
   height: 85px;
   overflow: hidden;
 }
-img{
+img {
   width: 300px;
   height: 300px;
-  border: 3px solid #69f0ae;
+  border: 3px solid #e6b252;
 }
 </style>

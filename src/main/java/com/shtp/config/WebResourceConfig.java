@@ -3,6 +3,7 @@ package com.shtp.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -19,7 +20,8 @@ public class WebResourceConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 配置资源映射路径
         // 在当前配置下，如果后端在本地运行，访问上传的文件资源，只需访问路径 http://localhost:8081/file/{file_name}
-        registry.addResourceHandler("/file/**").addResourceLocations("file:"+fileUploadPath);
+        registry.addResourceHandler("/file/**").addResourceLocations("file://"+fileUploadPath);
+        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/");
     }
 
     @Override

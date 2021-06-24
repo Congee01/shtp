@@ -105,8 +105,6 @@ export default {
 
 <style scoped>
 body{
-  background-color: #69f0ae;
-  background-image: url("back.png");
 }
 .form {
   position: relative;

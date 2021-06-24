@@ -21,6 +21,7 @@ public class ImgServiceImpl implements ImgService {
 
     @Value("${web.file-upload-path}")
     private String path;
+
     @Override
     public ResultVO<ImgInfoVO> uploadImg(MultipartFile file) {
         try {

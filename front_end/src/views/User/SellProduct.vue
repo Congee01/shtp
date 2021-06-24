@@ -1,7 +1,7 @@
 <template>
   <body>
   <div>
-    <v-app-bar color="#69f0ae" dense dark>
+    <v-app-bar color="#47341d" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -33,7 +33,7 @@
     <v-container class="ma-8 pa-4">
       <v-row>
         <router-link :to="`/user/:userId/create`">
-          <v-btn class="ma-4 mb-8" dark color="indigo">
+          <v-btn class="ma-4 mb-8" color="warning">
             创建商品
           </v-btn>
         </router-link>
@@ -123,7 +123,5 @@ export default {
 </script>
 <style scoped>
 body{
-  background-color: #69f0ae;
-  background-image: url("back.png");
 }
 </style>

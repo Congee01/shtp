@@ -1,7 +1,7 @@
 <template>
   <body>
   <div>
-    <v-app-bar color="#69f0ae" dense dark>
+    <v-app-bar color="#47341d" dense dark>
       <v-app-bar-nav-icon @click="direct('/user')">
         <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
       >
@@ -207,7 +207,5 @@ export default {
 
 <style scoped>
 body{
-  background-color: #69f0ae;
-  background-image: url("back.png");
 }
 </style>

@@ -1,84 +1,52 @@
 <template>
-  <body>
-  <template>
-    <div>
-      <v-app-bar color="#69f0ae" dense dark>
-        <v-app-bar-nav-icon @click="direct('/user')">
-          <v-icon>mdi-home</v-icon></v-app-bar-nav-icon
-        >
+  <div>
+    <app-bar />
+    <v-container class="pl-16 pr-16">
+      <form class="pa-12 grey lighten-5 mt-8">
+        <v-text-field v-model="productInfo.id" label="商品ID"></v-text-field>
+        <v-text-field
+          v-model="productInfo.name"
+          label="商品名称"
+        ></v-text-field>
+        <v-text-field
+          v-model="productInfo.intro"
+          label="商品简介"
+        ></v-text-field>
+        <v-text-field
+          v-model="productInfo.cost"
+          label="商品价格"
+        ></v-text-field>
 
-        <v-toolbar-title @click="direct('/user')" class="cursor">
-          欢迎进入二手交易平台
-        </v-toolbar-title>
-
-        <v-spacer></v-spacer>
-
-        <v-menu left bottom>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn icon v-bind="attrs" v-on="on">
-              <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-          </template>
-
-          <v-list>
-            <v-list-item
-                v-for="opt in optionList"
-                :key="opt.optionName"
-                @click="direct(opt.link)"
-            >
-              <v-list-item-title>{{ opt.optionName }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </v-app-bar>
-    </div>
-  </template>
-  <v-container class="pl-16 pr-16">
-    <form class="pa-12 grey lighten-5 mt-8">
-    <v-text-field
-        v-model="productInfo.id"
-        label="商品ID"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.name"
-        label="商品名称"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.intro"
-        label="商品简介"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.cost"
-        label="商品价格"
-    ></v-text-field>
-
-    <v-text-field
-        v-model="productInfo.createTime"
-        label="创建时间"
-    ></v-text-field>
-    <v-text-field
-        v-model="productInfo.managerName"
-        label="创建用户名称"
-    ></v-text-field>
-    <v-btn @click="handleEditSubmit">
-      Save
-    </v-btn>
-    <router-link :to="`/user/:userId/sell`">
-      <v-btn>
-        close
-      </v-btn>
-    </router-link>
-    </form>
-  </v-container>
-  </body>
+        <v-text-field
+          v-model="productInfo.createTime"
+          label="创建时间"
+        ></v-text-field>
+        <v-text-field
+          v-model="productInfo.managerName"
+          label="创建用户名称"
+        ></v-text-field>
+        <v-btn @click="handleEditSubmit">
+          Save
+        </v-btn>
+        <router-link :to="`/user/:userId/sell`">
+          <v-btn>
+            close
+          </v-btn>
+        </router-link>
+      </form>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import {getProductById, updateProduct} from "@/api/product";
-
+import { getProductById, updateProduct } from "@/api/product";
+import AppBar from "@/components/AppBar.vue";
 
 export default {
   name: "EditProduct",
+  components: {
+    AppBar,
+  },
   data() {
     return {
       optionList: [
@@ -92,23 +60,23 @@ export default {
         },
         {
           optionName: "我要当卖家",
-          link:`/user/${window.localStorage.getItem("userId")}/sell`
+          link: `/user/${window.localStorage.getItem("userId")}/sell`,
         },
         {
           optionName: "我的购买",
-          link: `/user/${window.localStorage.getItem("userId")}/bought`
+          link: `/user/${window.localStorage.getItem("userId")}/bought`,
         },
         {
           optionName: "登出",
           link: "/",
         },
       ],
-      productInfo:{},
+      productInfo: {},
       currentEditProduct: {
         productId: "",
         productName: "",
         intro: "",
-        picture:"",
+        picture: "",
         createTime: "",
         deleteTime: "",
         cost: 0,
@@ -119,13 +87,13 @@ export default {
   },
   methods: {
     loadProduct() {
-      console.log("load")
+      console.log("load");
       const { productId } = this.$route.params;
       const uid = window.localStorage.getItem("userId");
-      getProductById({ uid, productId }).then(res => {
+      getProductById({ uid, productId }).then((res) => {
         console.log(res);
         this.productInfo = res;
-        this.currentEditProduct=res;
+        this.currentEditProduct = res;
         console.log(this.currentEditProduct);
         console.log(this.productInfo);
       });
@@ -163,6 +131,6 @@ export default {
 </script>
 
 <style scoped>
-body{
+body {
 }
 </style>

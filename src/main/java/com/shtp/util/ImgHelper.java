@@ -38,7 +38,9 @@ public class ImgHelper {
         }else
             newName = UUID.randomUUID().toString();
         // 根据目标地址构造文件输出流
-        FileOutputStream fileOutputStream = new FileOutputStream(directoryPath + newName);
+        String path = directoryPath + newName;
+        System.out.println("save file: " + path);
+        FileOutputStream fileOutputStream = new FileOutputStream(path);
         String newPath=directoryPath+newName;
         // 将文件复制到映射的地址
         FileCopyUtils.copy(file.getInputStream(),fileOutputStream);

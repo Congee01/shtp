@@ -1,12 +1,11 @@
 <template>
-  <body>
   <v-card class="ma-4 pa-2">
     <v-card-title class="ma-4 pa-2">
       <h1>{{ productName }}</h1>
     </v-card-title>
-    <img :src="pictureUrl" alt="Tulip"/>
+    <img :src="pictureUrl" alt="Tulip" />
     <v-card-text class="text">
-      {{ text}}
+      {{ text }}
     </v-card-text>
     <v-card-action>
       <router-link :to="`/user/edit/${productId}`">
@@ -14,69 +13,67 @@
       </router-link>
     </v-card-action>
   </v-card>
-  </body>
 </template>
 
 <script>
 export default {
   name: "ProductItemSell",
   props: {
-    productName:{
+    productName: {
       type: String,
-      default: "线性代数"
+      default: "线性代数",
     },
     productId: {
       type: Number,
-      default: 0
+      default: 0,
     },
-    picture:{
+    picture: {
       type: String,
       default: "defaultImg",
     },
     description: {
       type: String,
-      default: "商品简介"
+      default: "商品简介",
     },
     cost: {
       type: Number,
-      default: 0
+      default: 0,
     },
     bought: {
       type: Boolean,
-      default: false
+      default: false,
     },
     manageable: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      pictureUrl: require("../assets/"+this.picture),
-    }
+      pictureUrl: "",
+    };
   },
   computed: {
     text: function() {
       return this.description.length < 20
-          ? this.description
-          : this.description.substring(0, 20) + "...";
+        ? this.description
+        : this.description.substring(0, 20) + "...";
     },
   },
-}
+  mounted() {
+    this.pictureUrl = require("../assets/" + this.picture);
+  },
+};
 </script>
 
 <style scoped>
-body{
-  background-image: url("background.jpg");
-  background-color: #69f0ae;
-}
 h1 {
   font-family: "Arial Black";
   font-weight: bolder;
   font-size: large;
   color: #69f0ae;
 }
-h3{
+h3 {
   text-align: right;
 }
 .text {
@@ -86,7 +83,7 @@ h3{
   height: 85px;
   overflow: hidden;
 }
-img{
+img {
   width: 300px;
   height: 300px;
   border: 3px solid #69f0ae;
