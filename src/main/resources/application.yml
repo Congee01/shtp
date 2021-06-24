@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/shtp?setUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 1234567890
+    password: 123456
   servlet:
     multipart:
       max-file-size: 200MB #设置上传文件大小不得超过200MB
@@ -25,4 +25,4 @@ logging:
 
 # 自定义标签 ${web.file-upload-path} 用于存储向服务器上传的文件
 web:
-  file-upload-path: C:\Users\Alice Cheang\Desktop\shtp\front_end\src\assets\
+  file-upload-path: D:\1\大二\大二下\shtp\front_end\src\assets\

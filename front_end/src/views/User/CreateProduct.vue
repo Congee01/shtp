@@ -33,7 +33,7 @@
           <v-textarea v-model="productInfo.intro" label="商品简介"></v-textarea>
           <v-text-field
             v-model="productInfo.cost"
-            label="课程价格(元)"
+            label="商品价格(元)"
           ></v-text-field>
           <v-form ref="uploadFileForm">
             <v-file-input
